@@ -1,0 +1,4687 @@
+{
+  "canonicalize_version": 1,
+  "exploration_order": "descending",
+  "base_facts": [
+    "R(a,b)",
+    "R(b,c)",
+    "R(c,d)",
+    "S(a,c)",
+    "S(b,d)",
+    "P(d)"
+  ],
+  "steps": 200,
+  "terminated": "max_queries",
+  "contradictions": 2,
+  "final_state": [
+    {
+      "module": "M1",
+      "label": "mereologica",
+      "config": 6,
+      "active_rules": [
+        "m1.p.antisymmetric",
+        "m1.p.atomic_has_no_parts"
+      ],
+      "nogood_count": 2,
+      "paralyzed": false,
+      "regenerations": 3
+    },
+    {
+      "module": "M2",
+      "label": "conjuntista",
+      "config": 10,
+      "active_rules": [
+        "m2.p.foundation",
+        "m2.p.subset_not_member"
+      ],
+      "nogood_count": 2,
+      "paralyzed": false,
+      "regenerations": 3
+    },
+    {
+      "module": "M3",
+      "label": "procesual",
+      "config": 10,
+      "active_rules": [
+        "m3.p.asymmetric",
+        "m3.p.initial_has_no_predecessor"
+      ],
+      "nogood_count": 2,
+      "paralyzed": false,
+      "regenerations": 3
+    }
+  ],
+  "log": [
+    {
+      "query_id": "q0000",
+      "query": "R(a,b)",
+      "answers": {
+        "M1": "YES",
+        "M2": "YES",
+        "M3": "YES"
+      },
+      "justifications": {
+        "M1": [],
+        "M2": [],
+        "M3": []
+      },
+      "contradiction": false,
+      "nogoods_created": [],
+      "configs_before": {
+        "M1": 15,
+        "M2": 15,
+        "M3": 14
+      }
+    },
+    {
+      "query_id": "q0001",
+      "query": "R(a,c)",
+      "answers": {
+        "M1": "YES",
+        "M2": "NO",
+        "M3": "NO"
+      },
+      "justifications": {
+        "M1": [
+          "m1.p.adjacency_implies_part"
+        ],
+        "M2": [
+          "m2.p.membership_not_transitive"
+        ],
+        "M3": [
+          "m3.p.asymmetric",
+          "m3.p.cause_precedes"
+        ]
+      },
+      "contradiction": true,
+      "nogoods_created": [
+        {
+          "module": "M1",
+          "nogood": [
+            "m1.p.adjacency_implies_part"
+          ],
+          "config_before": 15,
+          "outcome": "retracted"
+        },
+        {
+          "module": "M2",
+          "nogood": [
+            "m2.p.membership_not_transitive"
+          ],
+          "config_before": 15,
+          "outcome": "retracted"
+        },
+        {
+          "module": "M3",
+          "nogood": [
+            "m3.p.asymmetric",
+            "m3.p.cause_precedes"
+          ],
+          "config_before": 14,
+          "outcome": "retracted"
+        }
+      ],
+      "configs_before": {
+        "M1": 15,
+        "M2": 15,
+        "M3": 14
+      }
+    },
+    {
+      "query_id": "q0002",
+      "query": "R(a,d)",
+      "answers": {
+        "M1": "YES",
+        "M2": "ABSTAIN",
+        "M3": "YES"
+      },
+      "justifications": {
+        "M1": [
+          "m1.p.transitive"
+        ],
+        "M2": [],
+        "M3": [
+          "m3.p.transitive"
+        ]
+      },
+      "contradiction": false,
+      "nogoods_created": [],
+      "configs_before": {
+        "M1": 7,
+        "M2": 14,
+        "M3": 11
+      }
+    },
+    {
+      "query_id": "q0003",
+      "query": "R(b,a)",
+      "answers": {
+        "M1": "NO",
+        "M2": "NO",
+        "M3": "NO"
+      },
+      "justifications": {
+        "M1": [
+          "m1.p.antisymmetric"
+        ],
+        "M2": [
+          "m2.p.foundation"
+        ],
+        "M3": [
+          "m3.p.asymmetric"
+        ]
+      },
+      "contradiction": false,
+      "nogoods_created": [],
+      "configs_before": {
+        "M1": 7,
+        "M2": 14,
+        "M3": 11
+      }
+    },
+    {
+      "query_id": "q0004",
+      "query": "R(b,c)",
+      "answers": {
+        "M1": "YES",
+        "M2": "YES",
+        "M3": "YES"
+      },
+      "justifications": {
+        "M1": [],
+        "M2": [],
+        "M3": []
+      },
+      "contradiction": false,
+      "nogoods_created": [],
+      "configs_before": {
+        "M1": 7,
+        "M2": 14,
+        "M3": 11
+      }
+    },
+    {
+      "query_id": "q0005",
+      "query": "R(b,d)",
+      "answers": {
+        "M1": "YES",
+        "M2": "NO",
+        "M3": "YES"
+      },
+      "justifications": {
+        "M1": [
+          "m1.p.transitive"
+        ],
+        "M2": [
+          "m2.p.singleton_closed"
+        ],
+        "M3": [
+          "m3.p.transitive"
+        ]
+      },
+      "contradiction": true,
+      "nogoods_created": [
+        {
+          "module": "M1",
+          "nogood": [
+            "m1.p.transitive"
+          ],
+          "config_before": 7,
+          "outcome": "retracted"
+        },
+        {
+          "module": "M2",
+          "nogood": [
+            "m2.p.singleton_closed"
+          ],
+          "config_before": 14,
+          "outcome": "retracted"
+        },
+        {
+          "module": "M3",
+          "nogood": [
+            "m3.p.transitive"
+          ],
+          "config_before": 11,
+          "outcome": "retracted"
+        }
+      ],
+      "configs_before": {
+        "M1": 7,
+        "M2": 14,
+        "M3": 11
+      }
+    },
+    {
+      "query_id": "q0006",
+      "query": "R(c,a)",
+      "answers": {
+        "M1": "ABSTAIN",
+        "M2": "ABSTAIN",
+        "M3": "ABSTAIN"
+      },
+      "justifications": {
+        "M1": [],
+        "M2": [],
+        "M3": []
+      },
+      "contradiction": false,
+      "nogoods_created": [],
+      "configs_before": {
+        "M1": 6,
+        "M2": 10,
+        "M3": 10
+      }
+    },
+    {
+      "query_id": "q0007",
+      "query": "R(c,b)",
+      "answers": {
+        "M1": "NO",
+        "M2": "NO",
+        "M3": "NO"
+      },
+      "justifications": {
+        "M1": [
+          "m1.p.antisymmetric"
+        ],
+        "M2": [
+          "m2.p.foundation"
+        ],
+        "M3": [
+          "m3.p.asymmetric"
+        ]
+      },
+      "contradiction": false,
+      "nogoods_created": [],
+      "configs_before": {
+        "M1": 6,
+        "M2": 10,
+        "M3": 10
+      }
+    },
+    {
+      "query_id": "q0008",
+      "query": "R(c,d)",
+      "answers": {
+        "M1": "YES",
+        "M2": "YES",
+        "M3": "YES"
+      },
+      "justifications": {
+        "M1": [],
+        "M2": [],
+        "M3": []
+      },
+      "contradiction": false,
+      "nogoods_created": [],
+      "configs_before": {
+        "M1": 6,
+        "M2": 10,
+        "M3": 10
+      }
+    },
+    {
+      "query_id": "q0009",
+      "query": "R(d,a)",
+      "answers": {
+        "M1": "ABSTAIN",
+        "M2": "ABSTAIN",
+        "M3": "ABSTAIN"
+      },
+      "justifications": {
+        "M1": [],
+        "M2": [],
+        "M3": []
+      },
+      "contradiction": false,
+      "nogoods_created": [],
+      "configs_before": {
+        "M1": 6,
+        "M2": 10,
+        "M3": 10
+      }
+    },
+    {
+      "query_id": "q0010",
+      "query": "R(d,b)",
+      "answers": {
+        "M1": "ABSTAIN",
+        "M2": "ABSTAIN",
+        "M3": "ABSTAIN"
+      },
+      "justifications": {
+        "M1": [],
+        "M2": [],
+        "M3": []
+      },
+      "contradiction": false,
+      "nogoods_created": [],
+      "configs_before": {
+        "M1": 6,
+        "M2": 10,
+        "M3": 10
+      }
+    },
+    {
+      "query_id": "q0011",
+      "query": "R(d,c)",
+      "answers": {
+        "M1": "NO",
+        "M2": "NO",
+        "M3": "NO"
+      },
+      "justifications": {
+        "M1": [
+          "m1.p.antisymmetric"
+        ],
+        "M2": [
+          "m2.p.foundation"
+        ],
+        "M3": [
+          "m3.p.asymmetric"
+        ]
+      },
+      "contradiction": false,
+      "nogoods_created": [],
+      "configs_before": {
+        "M1": 6,
+        "M2": 10,
+        "M3": 10
+      }
+    },
+    {
+      "query_id": "q0012",
+      "query": "R(a,b)",
+      "answers": {
+        "M1": "YES",
+        "M2": "YES",
+        "M3": "YES"
+      },
+      "justifications": {
+        "M1": [],
+        "M2": [],
+        "M3": []
+      },
+      "contradiction": false,
+      "nogoods_created": [],
+      "configs_before": {
+        "M1": 6,
+        "M2": 10,
+        "M3": 10
+      }
+    },
+    {
+      "query_id": "q0013",
+      "query": "R(a,c)",
+      "answers": {
+        "M1": "ABSTAIN",
+        "M2": "NO",
+        "M3": "ABSTAIN"
+      },
+      "justifications": {
+        "M1": [],
+        "M2": [
+          "m2.p.subset_not_member"
+        ],
+        "M3": []
+      },
+      "contradiction": false,
+      "nogoods_created": [],
+      "configs_before": {
+        "M1": 6,
+        "M2": 10,
+        "M3": 10
+      }
+    },
+    {
+      "query_id": "q0014",
+      "query": "R(a,d)",
+      "answers": {
+        "M1": "ABSTAIN",
+        "M2": "ABSTAIN",
+        "M3": "ABSTAIN"
+      },
+      "justifications": {
+        "M1": [],
+        "M2": [],
+        "M3": []
+      },
+      "contradiction": false,
+      "nogoods_created": [],
+      "configs_before": {
+        "M1": 6,
+        "M2": 10,
+        "M3": 10
+      }
+    },
+    {
+      "query_id": "q0015",
+      "query": "R(b,a)",
+      "answers": {
+        "M1": "NO",
+        "M2": "NO",
+        "M3": "NO"
+      },
+      "justifications": {
+        "M1": [
+          "m1.p.antisymmetric"
+        ],
+        "M2": [
+          "m2.p.foundation"
+        ],
+        "M3": [
+          "m3.p.asymmetric"
+        ]
+      },
+      "contradiction": false,
+      "nogoods_created": [],
+      "configs_before": {
+        "M1": 6,
+        "M2": 10,
+        "M3": 10
+      }
+    },
+    {
+      "query_id": "q0016",
+      "query": "R(b,c)",
+      "answers": {
+        "M1": "YES",
+        "M2": "YES",
+        "M3": "YES"
+      },
+      "justifications": {
+        "M1": [],
+        "M2": [],
+        "M3": []
+      },
+      "contradiction": false,
+      "nogoods_created": [],
+      "configs_before": {
+        "M1": 6,
+        "M2": 10,
+        "M3": 10
+      }
+    },
+    {
+      "query_id": "q0017",
+      "query": "R(b,d)",
+      "answers": {
+        "M1": "ABSTAIN",
+        "M2": "NO",
+        "M3": "ABSTAIN"
+      },
+      "justifications": {
+        "M1": [],
+        "M2": [
+          "m2.p.subset_not_member"
+        ],
+        "M3": []
+      },
+      "contradiction": false,
+      "nogoods_created": [],
+      "configs_before": {
+        "M1": 6,
+        "M2": 10,
+        "M3": 10
+      }
+    },
+    {
+      "query_id": "q0018",
+      "query": "R(c,a)",
+      "answers": {
+        "M1": "ABSTAIN",
+        "M2": "ABSTAIN",
+        "M3": "ABSTAIN"
+      },
+      "justifications": {
+        "M1": [],
+        "M2": [],
+        "M3": []
+      },
+      "contradiction": false,
+      "nogoods_created": [],
+      "configs_before": {
+        "M1": 6,
+        "M2": 10,
+        "M3": 10
+      }
+    },
+    {
+      "query_id": "q0019",
+      "query": "R(c,b)",
+      "answers": {
+        "M1": "NO",
+        "M2": "NO",
+        "M3": "NO"
+      },
+      "justifications": {
+        "M1": [
+          "m1.p.antisymmetric"
+        ],
+        "M2": [
+          "m2.p.foundation"
+        ],
+        "M3": [
+          "m3.p.asymmetric"
+        ]
+      },
+      "contradiction": false,
+      "nogoods_created": [],
+      "configs_before": {
+        "M1": 6,
+        "M2": 10,
+        "M3": 10
+      }
+    },
+    {
+      "query_id": "q0020",
+      "query": "R(c,d)",
+      "answers": {
+        "M1": "YES",
+        "M2": "YES",
+        "M3": "YES"
+      },
+      "justifications": {
+        "M1": [],
+        "M2": [],
+        "M3": []
+      },
+      "contradiction": false,
+      "nogoods_created": [],
+      "configs_before": {
+        "M1": 6,
+        "M2": 10,
+        "M3": 10
+      }
+    },
+    {
+      "query_id": "q0021",
+      "query": "R(d,a)",
+      "answers": {
+        "M1": "ABSTAIN",
+        "M2": "ABSTAIN",
+        "M3": "ABSTAIN"
+      },
+      "justifications": {
+        "M1": [],
+        "M2": [],
+        "M3": []
+      },
+      "contradiction": false,
+      "nogoods_created": [],
+      "configs_before": {
+        "M1": 6,
+        "M2": 10,
+        "M3": 10
+      }
+    },
+    {
+      "query_id": "q0022",
+      "query": "R(d,b)",
+      "answers": {
+        "M1": "ABSTAIN",
+        "M2": "ABSTAIN",
+        "M3": "ABSTAIN"
+      },
+      "justifications": {
+        "M1": [],
+        "M2": [],
+        "M3": []
+      },
+      "contradiction": false,
+      "nogoods_created": [],
+      "configs_before": {
+        "M1": 6,
+        "M2": 10,
+        "M3": 10
+      }
+    },
+    {
+      "query_id": "q0023",
+      "query": "R(d,c)",
+      "answers": {
+        "M1": "NO",
+        "M2": "NO",
+        "M3": "NO"
+      },
+      "justifications": {
+        "M1": [
+          "m1.p.antisymmetric"
+        ],
+        "M2": [
+          "m2.p.foundation"
+        ],
+        "M3": [
+          "m3.p.asymmetric"
+        ]
+      },
+      "contradiction": false,
+      "nogoods_created": [],
+      "configs_before": {
+        "M1": 6,
+        "M2": 10,
+        "M3": 10
+      }
+    },
+    {
+      "query_id": "q0024",
+      "query": "R(a,b)",
+      "answers": {
+        "M1": "YES",
+        "M2": "YES",
+        "M3": "YES"
+      },
+      "justifications": {
+        "M1": [],
+        "M2": [],
+        "M3": []
+      },
+      "contradiction": false,
+      "nogoods_created": [],
+      "configs_before": {
+        "M1": 6,
+        "M2": 10,
+        "M3": 10
+      }
+    },
+    {
+      "query_id": "q0025",
+      "query": "R(a,c)",
+      "answers": {
+        "M1": "ABSTAIN",
+        "M2": "NO",
+        "M3": "ABSTAIN"
+      },
+      "justifications": {
+        "M1": [],
+        "M2": [
+          "m2.p.subset_not_member"
+        ],
+        "M3": []
+      },
+      "contradiction": false,
+      "nogoods_created": [],
+      "configs_before": {
+        "M1": 6,
+        "M2": 10,
+        "M3": 10
+      }
+    },
+    {
+      "query_id": "q0026",
+      "query": "R(a,d)",
+      "answers": {
+        "M1": "ABSTAIN",
+        "M2": "ABSTAIN",
+        "M3": "ABSTAIN"
+      },
+      "justifications": {
+        "M1": [],
+        "M2": [],
+        "M3": []
+      },
+      "contradiction": false,
+      "nogoods_created": [],
+      "configs_before": {
+        "M1": 6,
+        "M2": 10,
+        "M3": 10
+      }
+    },
+    {
+      "query_id": "q0027",
+      "query": "R(b,a)",
+      "answers": {
+        "M1": "NO",
+        "M2": "NO",
+        "M3": "NO"
+      },
+      "justifications": {
+        "M1": [
+          "m1.p.antisymmetric"
+        ],
+        "M2": [
+          "m2.p.foundation"
+        ],
+        "M3": [
+          "m3.p.asymmetric"
+        ]
+      },
+      "contradiction": false,
+      "nogoods_created": [],
+      "configs_before": {
+        "M1": 6,
+        "M2": 10,
+        "M3": 10
+      }
+    },
+    {
+      "query_id": "q0028",
+      "query": "R(b,c)",
+      "answers": {
+        "M1": "YES",
+        "M2": "YES",
+        "M3": "YES"
+      },
+      "justifications": {
+        "M1": [],
+        "M2": [],
+        "M3": []
+      },
+      "contradiction": false,
+      "nogoods_created": [],
+      "configs_before": {
+        "M1": 6,
+        "M2": 10,
+        "M3": 10
+      }
+    },
+    {
+      "query_id": "q0029",
+      "query": "R(b,d)",
+      "answers": {
+        "M1": "ABSTAIN",
+        "M2": "NO",
+        "M3": "ABSTAIN"
+      },
+      "justifications": {
+        "M1": [],
+        "M2": [
+          "m2.p.subset_not_member"
+        ],
+        "M3": []
+      },
+      "contradiction": false,
+      "nogoods_created": [],
+      "configs_before": {
+        "M1": 6,
+        "M2": 10,
+        "M3": 10
+      }
+    },
+    {
+      "query_id": "q0030",
+      "query": "R(c,a)",
+      "answers": {
+        "M1": "ABSTAIN",
+        "M2": "ABSTAIN",
+        "M3": "ABSTAIN"
+      },
+      "justifications": {
+        "M1": [],
+        "M2": [],
+        "M3": []
+      },
+      "contradiction": false,
+      "nogoods_created": [],
+      "configs_before": {
+        "M1": 6,
+        "M2": 10,
+        "M3": 10
+      }
+    },
+    {
+      "query_id": "q0031",
+      "query": "R(c,b)",
+      "answers": {
+        "M1": "NO",
+        "M2": "NO",
+        "M3": "NO"
+      },
+      "justifications": {
+        "M1": [
+          "m1.p.antisymmetric"
+        ],
+        "M2": [
+          "m2.p.foundation"
+        ],
+        "M3": [
+          "m3.p.asymmetric"
+        ]
+      },
+      "contradiction": false,
+      "nogoods_created": [],
+      "configs_before": {
+        "M1": 6,
+        "M2": 10,
+        "M3": 10
+      }
+    },
+    {
+      "query_id": "q0032",
+      "query": "R(c,d)",
+      "answers": {
+        "M1": "YES",
+        "M2": "YES",
+        "M3": "YES"
+      },
+      "justifications": {
+        "M1": [],
+        "M2": [],
+        "M3": []
+      },
+      "contradiction": false,
+      "nogoods_created": [],
+      "configs_before": {
+        "M1": 6,
+        "M2": 10,
+        "M3": 10
+      }
+    },
+    {
+      "query_id": "q0033",
+      "query": "R(d,a)",
+      "answers": {
+        "M1": "ABSTAIN",
+        "M2": "ABSTAIN",
+        "M3": "ABSTAIN"
+      },
+      "justifications": {
+        "M1": [],
+        "M2": [],
+        "M3": []
+      },
+      "contradiction": false,
+      "nogoods_created": [],
+      "configs_before": {
+        "M1": 6,
+        "M2": 10,
+        "M3": 10
+      }
+    },
+    {
+      "query_id": "q0034",
+      "query": "R(d,b)",
+      "answers": {
+        "M1": "ABSTAIN",
+        "M2": "ABSTAIN",
+        "M3": "ABSTAIN"
+      },
+      "justifications": {
+        "M1": [],
+        "M2": [],
+        "M3": []
+      },
+      "contradiction": false,
+      "nogoods_created": [],
+      "configs_before": {
+        "M1": 6,
+        "M2": 10,
+        "M3": 10
+      }
+    },
+    {
+      "query_id": "q0035",
+      "query": "R(d,c)",
+      "answers": {
+        "M1": "NO",
+        "M2": "NO",
+        "M3": "NO"
+      },
+      "justifications": {
+        "M1": [
+          "m1.p.antisymmetric"
+        ],
+        "M2": [
+          "m2.p.foundation"
+        ],
+        "M3": [
+          "m3.p.asymmetric"
+        ]
+      },
+      "contradiction": false,
+      "nogoods_created": [],
+      "configs_before": {
+        "M1": 6,
+        "M2": 10,
+        "M3": 10
+      }
+    },
+    {
+      "query_id": "q0036",
+      "query": "R(a,b)",
+      "answers": {
+        "M1": "YES",
+        "M2": "YES",
+        "M3": "YES"
+      },
+      "justifications": {
+        "M1": [],
+        "M2": [],
+        "M3": []
+      },
+      "contradiction": false,
+      "nogoods_created": [],
+      "configs_before": {
+        "M1": 6,
+        "M2": 10,
+        "M3": 10
+      }
+    },
+    {
+      "query_id": "q0037",
+      "query": "R(a,c)",
+      "answers": {
+        "M1": "ABSTAIN",
+        "M2": "NO",
+        "M3": "ABSTAIN"
+      },
+      "justifications": {
+        "M1": [],
+        "M2": [
+          "m2.p.subset_not_member"
+        ],
+        "M3": []
+      },
+      "contradiction": false,
+      "nogoods_created": [],
+      "configs_before": {
+        "M1": 6,
+        "M2": 10,
+        "M3": 10
+      }
+    },
+    {
+      "query_id": "q0038",
+      "query": "R(a,d)",
+      "answers": {
+        "M1": "ABSTAIN",
+        "M2": "ABSTAIN",
+        "M3": "ABSTAIN"
+      },
+      "justifications": {
+        "M1": [],
+        "M2": [],
+        "M3": []
+      },
+      "contradiction": false,
+      "nogoods_created": [],
+      "configs_before": {
+        "M1": 6,
+        "M2": 10,
+        "M3": 10
+      }
+    },
+    {
+      "query_id": "q0039",
+      "query": "R(b,a)",
+      "answers": {
+        "M1": "NO",
+        "M2": "NO",
+        "M3": "NO"
+      },
+      "justifications": {
+        "M1": [
+          "m1.p.antisymmetric"
+        ],
+        "M2": [
+          "m2.p.foundation"
+        ],
+        "M3": [
+          "m3.p.asymmetric"
+        ]
+      },
+      "contradiction": false,
+      "nogoods_created": [],
+      "configs_before": {
+        "M1": 6,
+        "M2": 10,
+        "M3": 10
+      }
+    },
+    {
+      "query_id": "q0040",
+      "query": "R(b,c)",
+      "answers": {
+        "M1": "YES",
+        "M2": "YES",
+        "M3": "YES"
+      },
+      "justifications": {
+        "M1": [],
+        "M2": [],
+        "M3": []
+      },
+      "contradiction": false,
+      "nogoods_created": [],
+      "configs_before": {
+        "M1": 6,
+        "M2": 10,
+        "M3": 10
+      }
+    },
+    {
+      "query_id": "q0041",
+      "query": "R(b,d)",
+      "answers": {
+        "M1": "ABSTAIN",
+        "M2": "NO",
+        "M3": "ABSTAIN"
+      },
+      "justifications": {
+        "M1": [],
+        "M2": [
+          "m2.p.subset_not_member"
+        ],
+        "M3": []
+      },
+      "contradiction": false,
+      "nogoods_created": [],
+      "configs_before": {
+        "M1": 6,
+        "M2": 10,
+        "M3": 10
+      }
+    },
+    {
+      "query_id": "q0042",
+      "query": "R(c,a)",
+      "answers": {
+        "M1": "ABSTAIN",
+        "M2": "ABSTAIN",
+        "M3": "ABSTAIN"
+      },
+      "justifications": {
+        "M1": [],
+        "M2": [],
+        "M3": []
+      },
+      "contradiction": false,
+      "nogoods_created": [],
+      "configs_before": {
+        "M1": 6,
+        "M2": 10,
+        "M3": 10
+      }
+    },
+    {
+      "query_id": "q0043",
+      "query": "R(c,b)",
+      "answers": {
+        "M1": "NO",
+        "M2": "NO",
+        "M3": "NO"
+      },
+      "justifications": {
+        "M1": [
+          "m1.p.antisymmetric"
+        ],
+        "M2": [
+          "m2.p.foundation"
+        ],
+        "M3": [
+          "m3.p.asymmetric"
+        ]
+      },
+      "contradiction": false,
+      "nogoods_created": [],
+      "configs_before": {
+        "M1": 6,
+        "M2": 10,
+        "M3": 10
+      }
+    },
+    {
+      "query_id": "q0044",
+      "query": "R(c,d)",
+      "answers": {
+        "M1": "YES",
+        "M2": "YES",
+        "M3": "YES"
+      },
+      "justifications": {
+        "M1": [],
+        "M2": [],
+        "M3": []
+      },
+      "contradiction": false,
+      "nogoods_created": [],
+      "configs_before": {
+        "M1": 6,
+        "M2": 10,
+        "M3": 10
+      }
+    },
+    {
+      "query_id": "q0045",
+      "query": "R(d,a)",
+      "answers": {
+        "M1": "ABSTAIN",
+        "M2": "ABSTAIN",
+        "M3": "ABSTAIN"
+      },
+      "justifications": {
+        "M1": [],
+        "M2": [],
+        "M3": []
+      },
+      "contradiction": false,
+      "nogoods_created": [],
+      "configs_before": {
+        "M1": 6,
+        "M2": 10,
+        "M3": 10
+      }
+    },
+    {
+      "query_id": "q0046",
+      "query": "R(d,b)",
+      "answers": {
+        "M1": "ABSTAIN",
+        "M2": "ABSTAIN",
+        "M3": "ABSTAIN"
+      },
+      "justifications": {
+        "M1": [],
+        "M2": [],
+        "M3": []
+      },
+      "contradiction": false,
+      "nogoods_created": [],
+      "configs_before": {
+        "M1": 6,
+        "M2": 10,
+        "M3": 10
+      }
+    },
+    {
+      "query_id": "q0047",
+      "query": "R(d,c)",
+      "answers": {
+        "M1": "NO",
+        "M2": "NO",
+        "M3": "NO"
+      },
+      "justifications": {
+        "M1": [
+          "m1.p.antisymmetric"
+        ],
+        "M2": [
+          "m2.p.foundation"
+        ],
+        "M3": [
+          "m3.p.asymmetric"
+        ]
+      },
+      "contradiction": false,
+      "nogoods_created": [],
+      "configs_before": {
+        "M1": 6,
+        "M2": 10,
+        "M3": 10
+      }
+    },
+    {
+      "query_id": "q0048",
+      "query": "R(a,b)",
+      "answers": {
+        "M1": "YES",
+        "M2": "YES",
+        "M3": "YES"
+      },
+      "justifications": {
+        "M1": [],
+        "M2": [],
+        "M3": []
+      },
+      "contradiction": false,
+      "nogoods_created": [],
+      "configs_before": {
+        "M1": 6,
+        "M2": 10,
+        "M3": 10
+      }
+    },
+    {
+      "query_id": "q0049",
+      "query": "R(a,c)",
+      "answers": {
+        "M1": "ABSTAIN",
+        "M2": "NO",
+        "M3": "ABSTAIN"
+      },
+      "justifications": {
+        "M1": [],
+        "M2": [
+          "m2.p.subset_not_member"
+        ],
+        "M3": []
+      },
+      "contradiction": false,
+      "nogoods_created": [],
+      "configs_before": {
+        "M1": 6,
+        "M2": 10,
+        "M3": 10
+      }
+    },
+    {
+      "query_id": "q0050",
+      "query": "R(a,d)",
+      "answers": {
+        "M1": "ABSTAIN",
+        "M2": "ABSTAIN",
+        "M3": "ABSTAIN"
+      },
+      "justifications": {
+        "M1": [],
+        "M2": [],
+        "M3": []
+      },
+      "contradiction": false,
+      "nogoods_created": [],
+      "configs_before": {
+        "M1": 6,
+        "M2": 10,
+        "M3": 10
+      }
+    },
+    {
+      "query_id": "q0051",
+      "query": "R(b,a)",
+      "answers": {
+        "M1": "NO",
+        "M2": "NO",
+        "M3": "NO"
+      },
+      "justifications": {
+        "M1": [
+          "m1.p.antisymmetric"
+        ],
+        "M2": [
+          "m2.p.foundation"
+        ],
+        "M3": [
+          "m3.p.asymmetric"
+        ]
+      },
+      "contradiction": false,
+      "nogoods_created": [],
+      "configs_before": {
+        "M1": 6,
+        "M2": 10,
+        "M3": 10
+      }
+    },
+    {
+      "query_id": "q0052",
+      "query": "R(b,c)",
+      "answers": {
+        "M1": "YES",
+        "M2": "YES",
+        "M3": "YES"
+      },
+      "justifications": {
+        "M1": [],
+        "M2": [],
+        "M3": []
+      },
+      "contradiction": false,
+      "nogoods_created": [],
+      "configs_before": {
+        "M1": 6,
+        "M2": 10,
+        "M3": 10
+      }
+    },
+    {
+      "query_id": "q0053",
+      "query": "R(b,d)",
+      "answers": {
+        "M1": "ABSTAIN",
+        "M2": "NO",
+        "M3": "ABSTAIN"
+      },
+      "justifications": {
+        "M1": [],
+        "M2": [
+          "m2.p.subset_not_member"
+        ],
+        "M3": []
+      },
+      "contradiction": false,
+      "nogoods_created": [],
+      "configs_before": {
+        "M1": 6,
+        "M2": 10,
+        "M3": 10
+      }
+    },
+    {
+      "query_id": "q0054",
+      "query": "R(c,a)",
+      "answers": {
+        "M1": "ABSTAIN",
+        "M2": "ABSTAIN",
+        "M3": "ABSTAIN"
+      },
+      "justifications": {
+        "M1": [],
+        "M2": [],
+        "M3": []
+      },
+      "contradiction": false,
+      "nogoods_created": [],
+      "configs_before": {
+        "M1": 6,
+        "M2": 10,
+        "M3": 10
+      }
+    },
+    {
+      "query_id": "q0055",
+      "query": "R(c,b)",
+      "answers": {
+        "M1": "NO",
+        "M2": "NO",
+        "M3": "NO"
+      },
+      "justifications": {
+        "M1": [
+          "m1.p.antisymmetric"
+        ],
+        "M2": [
+          "m2.p.foundation"
+        ],
+        "M3": [
+          "m3.p.asymmetric"
+        ]
+      },
+      "contradiction": false,
+      "nogoods_created": [],
+      "configs_before": {
+        "M1": 6,
+        "M2": 10,
+        "M3": 10
+      }
+    },
+    {
+      "query_id": "q0056",
+      "query": "R(c,d)",
+      "answers": {
+        "M1": "YES",
+        "M2": "YES",
+        "M3": "YES"
+      },
+      "justifications": {
+        "M1": [],
+        "M2": [],
+        "M3": []
+      },
+      "contradiction": false,
+      "nogoods_created": [],
+      "configs_before": {
+        "M1": 6,
+        "M2": 10,
+        "M3": 10
+      }
+    },
+    {
+      "query_id": "q0057",
+      "query": "R(d,a)",
+      "answers": {
+        "M1": "ABSTAIN",
+        "M2": "ABSTAIN",
+        "M3": "ABSTAIN"
+      },
+      "justifications": {
+        "M1": [],
+        "M2": [],
+        "M3": []
+      },
+      "contradiction": false,
+      "nogoods_created": [],
+      "configs_before": {
+        "M1": 6,
+        "M2": 10,
+        "M3": 10
+      }
+    },
+    {
+      "query_id": "q0058",
+      "query": "R(d,b)",
+      "answers": {
+        "M1": "ABSTAIN",
+        "M2": "ABSTAIN",
+        "M3": "ABSTAIN"
+      },
+      "justifications": {
+        "M1": [],
+        "M2": [],
+        "M3": []
+      },
+      "contradiction": false,
+      "nogoods_created": [],
+      "configs_before": {
+        "M1": 6,
+        "M2": 10,
+        "M3": 10
+      }
+    },
+    {
+      "query_id": "q0059",
+      "query": "R(d,c)",
+      "answers": {
+        "M1": "NO",
+        "M2": "NO",
+        "M3": "NO"
+      },
+      "justifications": {
+        "M1": [
+          "m1.p.antisymmetric"
+        ],
+        "M2": [
+          "m2.p.foundation"
+        ],
+        "M3": [
+          "m3.p.asymmetric"
+        ]
+      },
+      "contradiction": false,
+      "nogoods_created": [],
+      "configs_before": {
+        "M1": 6,
+        "M2": 10,
+        "M3": 10
+      }
+    },
+    {
+      "query_id": "q0060",
+      "query": "R(a,b)",
+      "answers": {
+        "M1": "YES",
+        "M2": "YES",
+        "M3": "YES"
+      },
+      "justifications": {
+        "M1": [],
+        "M2": [],
+        "M3": []
+      },
+      "contradiction": false,
+      "nogoods_created": [],
+      "configs_before": {
+        "M1": 6,
+        "M2": 10,
+        "M3": 10
+      }
+    },
+    {
+      "query_id": "q0061",
+      "query": "R(a,c)",
+      "answers": {
+        "M1": "ABSTAIN",
+        "M2": "NO",
+        "M3": "ABSTAIN"
+      },
+      "justifications": {
+        "M1": [],
+        "M2": [
+          "m2.p.subset_not_member"
+        ],
+        "M3": []
+      },
+      "contradiction": false,
+      "nogoods_created": [],
+      "configs_before": {
+        "M1": 6,
+        "M2": 10,
+        "M3": 10
+      }
+    },
+    {
+      "query_id": "q0062",
+      "query": "R(a,d)",
+      "answers": {
+        "M1": "ABSTAIN",
+        "M2": "ABSTAIN",
+        "M3": "ABSTAIN"
+      },
+      "justifications": {
+        "M1": [],
+        "M2": [],
+        "M3": []
+      },
+      "contradiction": false,
+      "nogoods_created": [],
+      "configs_before": {
+        "M1": 6,
+        "M2": 10,
+        "M3": 10
+      }
+    },
+    {
+      "query_id": "q0063",
+      "query": "R(b,a)",
+      "answers": {
+        "M1": "NO",
+        "M2": "NO",
+        "M3": "NO"
+      },
+      "justifications": {
+        "M1": [
+          "m1.p.antisymmetric"
+        ],
+        "M2": [
+          "m2.p.foundation"
+        ],
+        "M3": [
+          "m3.p.asymmetric"
+        ]
+      },
+      "contradiction": false,
+      "nogoods_created": [],
+      "configs_before": {
+        "M1": 6,
+        "M2": 10,
+        "M3": 10
+      }
+    },
+    {
+      "query_id": "q0064",
+      "query": "R(b,c)",
+      "answers": {
+        "M1": "YES",
+        "M2": "YES",
+        "M3": "YES"
+      },
+      "justifications": {
+        "M1": [],
+        "M2": [],
+        "M3": []
+      },
+      "contradiction": false,
+      "nogoods_created": [],
+      "configs_before": {
+        "M1": 6,
+        "M2": 10,
+        "M3": 10
+      }
+    },
+    {
+      "query_id": "q0065",
+      "query": "R(b,d)",
+      "answers": {
+        "M1": "ABSTAIN",
+        "M2": "NO",
+        "M3": "ABSTAIN"
+      },
+      "justifications": {
+        "M1": [],
+        "M2": [
+          "m2.p.subset_not_member"
+        ],
+        "M3": []
+      },
+      "contradiction": false,
+      "nogoods_created": [],
+      "configs_before": {
+        "M1": 6,
+        "M2": 10,
+        "M3": 10
+      }
+    },
+    {
+      "query_id": "q0066",
+      "query": "R(c,a)",
+      "answers": {
+        "M1": "ABSTAIN",
+        "M2": "ABSTAIN",
+        "M3": "ABSTAIN"
+      },
+      "justifications": {
+        "M1": [],
+        "M2": [],
+        "M3": []
+      },
+      "contradiction": false,
+      "nogoods_created": [],
+      "configs_before": {
+        "M1": 6,
+        "M2": 10,
+        "M3": 10
+      }
+    },
+    {
+      "query_id": "q0067",
+      "query": "R(c,b)",
+      "answers": {
+        "M1": "NO",
+        "M2": "NO",
+        "M3": "NO"
+      },
+      "justifications": {
+        "M1": [
+          "m1.p.antisymmetric"
+        ],
+        "M2": [
+          "m2.p.foundation"
+        ],
+        "M3": [
+          "m3.p.asymmetric"
+        ]
+      },
+      "contradiction": false,
+      "nogoods_created": [],
+      "configs_before": {
+        "M1": 6,
+        "M2": 10,
+        "M3": 10
+      }
+    },
+    {
+      "query_id": "q0068",
+      "query": "R(c,d)",
+      "answers": {
+        "M1": "YES",
+        "M2": "YES",
+        "M3": "YES"
+      },
+      "justifications": {
+        "M1": [],
+        "M2": [],
+        "M3": []
+      },
+      "contradiction": false,
+      "nogoods_created": [],
+      "configs_before": {
+        "M1": 6,
+        "M2": 10,
+        "M3": 10
+      }
+    },
+    {
+      "query_id": "q0069",
+      "query": "R(d,a)",
+      "answers": {
+        "M1": "ABSTAIN",
+        "M2": "ABSTAIN",
+        "M3": "ABSTAIN"
+      },
+      "justifications": {
+        "M1": [],
+        "M2": [],
+        "M3": []
+      },
+      "contradiction": false,
+      "nogoods_created": [],
+      "configs_before": {
+        "M1": 6,
+        "M2": 10,
+        "M3": 10
+      }
+    },
+    {
+      "query_id": "q0070",
+      "query": "R(d,b)",
+      "answers": {
+        "M1": "ABSTAIN",
+        "M2": "ABSTAIN",
+        "M3": "ABSTAIN"
+      },
+      "justifications": {
+        "M1": [],
+        "M2": [],
+        "M3": []
+      },
+      "contradiction": false,
+      "nogoods_created": [],
+      "configs_before": {
+        "M1": 6,
+        "M2": 10,
+        "M3": 10
+      }
+    },
+    {
+      "query_id": "q0071",
+      "query": "R(d,c)",
+      "answers": {
+        "M1": "NO",
+        "M2": "NO",
+        "M3": "NO"
+      },
+      "justifications": {
+        "M1": [
+          "m1.p.antisymmetric"
+        ],
+        "M2": [
+          "m2.p.foundation"
+        ],
+        "M3": [
+          "m3.p.asymmetric"
+        ]
+      },
+      "contradiction": false,
+      "nogoods_created": [],
+      "configs_before": {
+        "M1": 6,
+        "M2": 10,
+        "M3": 10
+      }
+    },
+    {
+      "query_id": "q0072",
+      "query": "R(a,b)",
+      "answers": {
+        "M1": "YES",
+        "M2": "YES",
+        "M3": "YES"
+      },
+      "justifications": {
+        "M1": [],
+        "M2": [],
+        "M3": []
+      },
+      "contradiction": false,
+      "nogoods_created": [],
+      "configs_before": {
+        "M1": 6,
+        "M2": 10,
+        "M3": 10
+      }
+    },
+    {
+      "query_id": "q0073",
+      "query": "R(a,c)",
+      "answers": {
+        "M1": "ABSTAIN",
+        "M2": "NO",
+        "M3": "ABSTAIN"
+      },
+      "justifications": {
+        "M1": [],
+        "M2": [
+          "m2.p.subset_not_member"
+        ],
+        "M3": []
+      },
+      "contradiction": false,
+      "nogoods_created": [],
+      "configs_before": {
+        "M1": 6,
+        "M2": 10,
+        "M3": 10
+      }
+    },
+    {
+      "query_id": "q0074",
+      "query": "R(a,d)",
+      "answers": {
+        "M1": "ABSTAIN",
+        "M2": "ABSTAIN",
+        "M3": "ABSTAIN"
+      },
+      "justifications": {
+        "M1": [],
+        "M2": [],
+        "M3": []
+      },
+      "contradiction": false,
+      "nogoods_created": [],
+      "configs_before": {
+        "M1": 6,
+        "M2": 10,
+        "M3": 10
+      }
+    },
+    {
+      "query_id": "q0075",
+      "query": "R(b,a)",
+      "answers": {
+        "M1": "NO",
+        "M2": "NO",
+        "M3": "NO"
+      },
+      "justifications": {
+        "M1": [
+          "m1.p.antisymmetric"
+        ],
+        "M2": [
+          "m2.p.foundation"
+        ],
+        "M3": [
+          "m3.p.asymmetric"
+        ]
+      },
+      "contradiction": false,
+      "nogoods_created": [],
+      "configs_before": {
+        "M1": 6,
+        "M2": 10,
+        "M3": 10
+      }
+    },
+    {
+      "query_id": "q0076",
+      "query": "R(b,c)",
+      "answers": {
+        "M1": "YES",
+        "M2": "YES",
+        "M3": "YES"
+      },
+      "justifications": {
+        "M1": [],
+        "M2": [],
+        "M3": []
+      },
+      "contradiction": false,
+      "nogoods_created": [],
+      "configs_before": {
+        "M1": 6,
+        "M2": 10,
+        "M3": 10
+      }
+    },
+    {
+      "query_id": "q0077",
+      "query": "R(b,d)",
+      "answers": {
+        "M1": "ABSTAIN",
+        "M2": "NO",
+        "M3": "ABSTAIN"
+      },
+      "justifications": {
+        "M1": [],
+        "M2": [
+          "m2.p.subset_not_member"
+        ],
+        "M3": []
+      },
+      "contradiction": false,
+      "nogoods_created": [],
+      "configs_before": {
+        "M1": 6,
+        "M2": 10,
+        "M3": 10
+      }
+    },
+    {
+      "query_id": "q0078",
+      "query": "R(c,a)",
+      "answers": {
+        "M1": "ABSTAIN",
+        "M2": "ABSTAIN",
+        "M3": "ABSTAIN"
+      },
+      "justifications": {
+        "M1": [],
+        "M2": [],
+        "M3": []
+      },
+      "contradiction": false,
+      "nogoods_created": [],
+      "configs_before": {
+        "M1": 6,
+        "M2": 10,
+        "M3": 10
+      }
+    },
+    {
+      "query_id": "q0079",
+      "query": "R(c,b)",
+      "answers": {
+        "M1": "NO",
+        "M2": "NO",
+        "M3": "NO"
+      },
+      "justifications": {
+        "M1": [
+          "m1.p.antisymmetric"
+        ],
+        "M2": [
+          "m2.p.foundation"
+        ],
+        "M3": [
+          "m3.p.asymmetric"
+        ]
+      },
+      "contradiction": false,
+      "nogoods_created": [],
+      "configs_before": {
+        "M1": 6,
+        "M2": 10,
+        "M3": 10
+      }
+    },
+    {
+      "query_id": "q0080",
+      "query": "R(c,d)",
+      "answers": {
+        "M1": "YES",
+        "M2": "YES",
+        "M3": "YES"
+      },
+      "justifications": {
+        "M1": [],
+        "M2": [],
+        "M3": []
+      },
+      "contradiction": false,
+      "nogoods_created": [],
+      "configs_before": {
+        "M1": 6,
+        "M2": 10,
+        "M3": 10
+      }
+    },
+    {
+      "query_id": "q0081",
+      "query": "R(d,a)",
+      "answers": {
+        "M1": "ABSTAIN",
+        "M2": "ABSTAIN",
+        "M3": "ABSTAIN"
+      },
+      "justifications": {
+        "M1": [],
+        "M2": [],
+        "M3": []
+      },
+      "contradiction": false,
+      "nogoods_created": [],
+      "configs_before": {
+        "M1": 6,
+        "M2": 10,
+        "M3": 10
+      }
+    },
+    {
+      "query_id": "q0082",
+      "query": "R(d,b)",
+      "answers": {
+        "M1": "ABSTAIN",
+        "M2": "ABSTAIN",
+        "M3": "ABSTAIN"
+      },
+      "justifications": {
+        "M1": [],
+        "M2": [],
+        "M3": []
+      },
+      "contradiction": false,
+      "nogoods_created": [],
+      "configs_before": {
+        "M1": 6,
+        "M2": 10,
+        "M3": 10
+      }
+    },
+    {
+      "query_id": "q0083",
+      "query": "R(d,c)",
+      "answers": {
+        "M1": "NO",
+        "M2": "NO",
+        "M3": "NO"
+      },
+      "justifications": {
+        "M1": [
+          "m1.p.antisymmetric"
+        ],
+        "M2": [
+          "m2.p.foundation"
+        ],
+        "M3": [
+          "m3.p.asymmetric"
+        ]
+      },
+      "contradiction": false,
+      "nogoods_created": [],
+      "configs_before": {
+        "M1": 6,
+        "M2": 10,
+        "M3": 10
+      }
+    },
+    {
+      "query_id": "q0084",
+      "query": "R(a,b)",
+      "answers": {
+        "M1": "YES",
+        "M2": "YES",
+        "M3": "YES"
+      },
+      "justifications": {
+        "M1": [],
+        "M2": [],
+        "M3": []
+      },
+      "contradiction": false,
+      "nogoods_created": [],
+      "configs_before": {
+        "M1": 6,
+        "M2": 10,
+        "M3": 10
+      }
+    },
+    {
+      "query_id": "q0085",
+      "query": "R(a,c)",
+      "answers": {
+        "M1": "ABSTAIN",
+        "M2": "NO",
+        "M3": "ABSTAIN"
+      },
+      "justifications": {
+        "M1": [],
+        "M2": [
+          "m2.p.subset_not_member"
+        ],
+        "M3": []
+      },
+      "contradiction": false,
+      "nogoods_created": [],
+      "configs_before": {
+        "M1": 6,
+        "M2": 10,
+        "M3": 10
+      }
+    },
+    {
+      "query_id": "q0086",
+      "query": "R(a,d)",
+      "answers": {
+        "M1": "ABSTAIN",
+        "M2": "ABSTAIN",
+        "M3": "ABSTAIN"
+      },
+      "justifications": {
+        "M1": [],
+        "M2": [],
+        "M3": []
+      },
+      "contradiction": false,
+      "nogoods_created": [],
+      "configs_before": {
+        "M1": 6,
+        "M2": 10,
+        "M3": 10
+      }
+    },
+    {
+      "query_id": "q0087",
+      "query": "R(b,a)",
+      "answers": {
+        "M1": "NO",
+        "M2": "NO",
+        "M3": "NO"
+      },
+      "justifications": {
+        "M1": [
+          "m1.p.antisymmetric"
+        ],
+        "M2": [
+          "m2.p.foundation"
+        ],
+        "M3": [
+          "m3.p.asymmetric"
+        ]
+      },
+      "contradiction": false,
+      "nogoods_created": [],
+      "configs_before": {
+        "M1": 6,
+        "M2": 10,
+        "M3": 10
+      }
+    },
+    {
+      "query_id": "q0088",
+      "query": "R(b,c)",
+      "answers": {
+        "M1": "YES",
+        "M2": "YES",
+        "M3": "YES"
+      },
+      "justifications": {
+        "M1": [],
+        "M2": [],
+        "M3": []
+      },
+      "contradiction": false,
+      "nogoods_created": [],
+      "configs_before": {
+        "M1": 6,
+        "M2": 10,
+        "M3": 10
+      }
+    },
+    {
+      "query_id": "q0089",
+      "query": "R(b,d)",
+      "answers": {
+        "M1": "ABSTAIN",
+        "M2": "NO",
+        "M3": "ABSTAIN"
+      },
+      "justifications": {
+        "M1": [],
+        "M2": [
+          "m2.p.subset_not_member"
+        ],
+        "M3": []
+      },
+      "contradiction": false,
+      "nogoods_created": [],
+      "configs_before": {
+        "M1": 6,
+        "M2": 10,
+        "M3": 10
+      }
+    },
+    {
+      "query_id": "q0090",
+      "query": "R(c,a)",
+      "answers": {
+        "M1": "ABSTAIN",
+        "M2": "ABSTAIN",
+        "M3": "ABSTAIN"
+      },
+      "justifications": {
+        "M1": [],
+        "M2": [],
+        "M3": []
+      },
+      "contradiction": false,
+      "nogoods_created": [],
+      "configs_before": {
+        "M1": 6,
+        "M2": 10,
+        "M3": 10
+      }
+    },
+    {
+      "query_id": "q0091",
+      "query": "R(c,b)",
+      "answers": {
+        "M1": "NO",
+        "M2": "NO",
+        "M3": "NO"
+      },
+      "justifications": {
+        "M1": [
+          "m1.p.antisymmetric"
+        ],
+        "M2": [
+          "m2.p.foundation"
+        ],
+        "M3": [
+          "m3.p.asymmetric"
+        ]
+      },
+      "contradiction": false,
+      "nogoods_created": [],
+      "configs_before": {
+        "M1": 6,
+        "M2": 10,
+        "M3": 10
+      }
+    },
+    {
+      "query_id": "q0092",
+      "query": "R(c,d)",
+      "answers": {
+        "M1": "YES",
+        "M2": "YES",
+        "M3": "YES"
+      },
+      "justifications": {
+        "M1": [],
+        "M2": [],
+        "M3": []
+      },
+      "contradiction": false,
+      "nogoods_created": [],
+      "configs_before": {
+        "M1": 6,
+        "M2": 10,
+        "M3": 10
+      }
+    },
+    {
+      "query_id": "q0093",
+      "query": "R(d,a)",
+      "answers": {
+        "M1": "ABSTAIN",
+        "M2": "ABSTAIN",
+        "M3": "ABSTAIN"
+      },
+      "justifications": {
+        "M1": [],
+        "M2": [],
+        "M3": []
+      },
+      "contradiction": false,
+      "nogoods_created": [],
+      "configs_before": {
+        "M1": 6,
+        "M2": 10,
+        "M3": 10
+      }
+    },
+    {
+      "query_id": "q0094",
+      "query": "R(d,b)",
+      "answers": {
+        "M1": "ABSTAIN",
+        "M2": "ABSTAIN",
+        "M3": "ABSTAIN"
+      },
+      "justifications": {
+        "M1": [],
+        "M2": [],
+        "M3": []
+      },
+      "contradiction": false,
+      "nogoods_created": [],
+      "configs_before": {
+        "M1": 6,
+        "M2": 10,
+        "M3": 10
+      }
+    },
+    {
+      "query_id": "q0095",
+      "query": "R(d,c)",
+      "answers": {
+        "M1": "NO",
+        "M2": "NO",
+        "M3": "NO"
+      },
+      "justifications": {
+        "M1": [
+          "m1.p.antisymmetric"
+        ],
+        "M2": [
+          "m2.p.foundation"
+        ],
+        "M3": [
+          "m3.p.asymmetric"
+        ]
+      },
+      "contradiction": false,
+      "nogoods_created": [],
+      "configs_before": {
+        "M1": 6,
+        "M2": 10,
+        "M3": 10
+      }
+    },
+    {
+      "query_id": "q0096",
+      "query": "R(a,b)",
+      "answers": {
+        "M1": "YES",
+        "M2": "YES",
+        "M3": "YES"
+      },
+      "justifications": {
+        "M1": [],
+        "M2": [],
+        "M3": []
+      },
+      "contradiction": false,
+      "nogoods_created": [],
+      "configs_before": {
+        "M1": 6,
+        "M2": 10,
+        "M3": 10
+      }
+    },
+    {
+      "query_id": "q0097",
+      "query": "R(a,c)",
+      "answers": {
+        "M1": "ABSTAIN",
+        "M2": "NO",
+        "M3": "ABSTAIN"
+      },
+      "justifications": {
+        "M1": [],
+        "M2": [
+          "m2.p.subset_not_member"
+        ],
+        "M3": []
+      },
+      "contradiction": false,
+      "nogoods_created": [],
+      "configs_before": {
+        "M1": 6,
+        "M2": 10,
+        "M3": 10
+      }
+    },
+    {
+      "query_id": "q0098",
+      "query": "R(a,d)",
+      "answers": {
+        "M1": "ABSTAIN",
+        "M2": "ABSTAIN",
+        "M3": "ABSTAIN"
+      },
+      "justifications": {
+        "M1": [],
+        "M2": [],
+        "M3": []
+      },
+      "contradiction": false,
+      "nogoods_created": [],
+      "configs_before": {
+        "M1": 6,
+        "M2": 10,
+        "M3": 10
+      }
+    },
+    {
+      "query_id": "q0099",
+      "query": "R(b,a)",
+      "answers": {
+        "M1": "NO",
+        "M2": "NO",
+        "M3": "NO"
+      },
+      "justifications": {
+        "M1": [
+          "m1.p.antisymmetric"
+        ],
+        "M2": [
+          "m2.p.foundation"
+        ],
+        "M3": [
+          "m3.p.asymmetric"
+        ]
+      },
+      "contradiction": false,
+      "nogoods_created": [],
+      "configs_before": {
+        "M1": 6,
+        "M2": 10,
+        "M3": 10
+      }
+    },
+    {
+      "query_id": "q0100",
+      "query": "R(b,c)",
+      "answers": {
+        "M1": "YES",
+        "M2": "YES",
+        "M3": "YES"
+      },
+      "justifications": {
+        "M1": [],
+        "M2": [],
+        "M3": []
+      },
+      "contradiction": false,
+      "nogoods_created": [],
+      "configs_before": {
+        "M1": 6,
+        "M2": 10,
+        "M3": 10
+      }
+    },
+    {
+      "query_id": "q0101",
+      "query": "R(b,d)",
+      "answers": {
+        "M1": "ABSTAIN",
+        "M2": "NO",
+        "M3": "ABSTAIN"
+      },
+      "justifications": {
+        "M1": [],
+        "M2": [
+          "m2.p.subset_not_member"
+        ],
+        "M3": []
+      },
+      "contradiction": false,
+      "nogoods_created": [],
+      "configs_before": {
+        "M1": 6,
+        "M2": 10,
+        "M3": 10
+      }
+    },
+    {
+      "query_id": "q0102",
+      "query": "R(c,a)",
+      "answers": {
+        "M1": "ABSTAIN",
+        "M2": "ABSTAIN",
+        "M3": "ABSTAIN"
+      },
+      "justifications": {
+        "M1": [],
+        "M2": [],
+        "M3": []
+      },
+      "contradiction": false,
+      "nogoods_created": [],
+      "configs_before": {
+        "M1": 6,
+        "M2": 10,
+        "M3": 10
+      }
+    },
+    {
+      "query_id": "q0103",
+      "query": "R(c,b)",
+      "answers": {
+        "M1": "NO",
+        "M2": "NO",
+        "M3": "NO"
+      },
+      "justifications": {
+        "M1": [
+          "m1.p.antisymmetric"
+        ],
+        "M2": [
+          "m2.p.foundation"
+        ],
+        "M3": [
+          "m3.p.asymmetric"
+        ]
+      },
+      "contradiction": false,
+      "nogoods_created": [],
+      "configs_before": {
+        "M1": 6,
+        "M2": 10,
+        "M3": 10
+      }
+    },
+    {
+      "query_id": "q0104",
+      "query": "R(c,d)",
+      "answers": {
+        "M1": "YES",
+        "M2": "YES",
+        "M3": "YES"
+      },
+      "justifications": {
+        "M1": [],
+        "M2": [],
+        "M3": []
+      },
+      "contradiction": false,
+      "nogoods_created": [],
+      "configs_before": {
+        "M1": 6,
+        "M2": 10,
+        "M3": 10
+      }
+    },
+    {
+      "query_id": "q0105",
+      "query": "R(d,a)",
+      "answers": {
+        "M1": "ABSTAIN",
+        "M2": "ABSTAIN",
+        "M3": "ABSTAIN"
+      },
+      "justifications": {
+        "M1": [],
+        "M2": [],
+        "M3": []
+      },
+      "contradiction": false,
+      "nogoods_created": [],
+      "configs_before": {
+        "M1": 6,
+        "M2": 10,
+        "M3": 10
+      }
+    },
+    {
+      "query_id": "q0106",
+      "query": "R(d,b)",
+      "answers": {
+        "M1": "ABSTAIN",
+        "M2": "ABSTAIN",
+        "M3": "ABSTAIN"
+      },
+      "justifications": {
+        "M1": [],
+        "M2": [],
+        "M3": []
+      },
+      "contradiction": false,
+      "nogoods_created": [],
+      "configs_before": {
+        "M1": 6,
+        "M2": 10,
+        "M3": 10
+      }
+    },
+    {
+      "query_id": "q0107",
+      "query": "R(d,c)",
+      "answers": {
+        "M1": "NO",
+        "M2": "NO",
+        "M3": "NO"
+      },
+      "justifications": {
+        "M1": [
+          "m1.p.antisymmetric"
+        ],
+        "M2": [
+          "m2.p.foundation"
+        ],
+        "M3": [
+          "m3.p.asymmetric"
+        ]
+      },
+      "contradiction": false,
+      "nogoods_created": [],
+      "configs_before": {
+        "M1": 6,
+        "M2": 10,
+        "M3": 10
+      }
+    },
+    {
+      "query_id": "q0108",
+      "query": "R(a,b)",
+      "answers": {
+        "M1": "YES",
+        "M2": "YES",
+        "M3": "YES"
+      },
+      "justifications": {
+        "M1": [],
+        "M2": [],
+        "M3": []
+      },
+      "contradiction": false,
+      "nogoods_created": [],
+      "configs_before": {
+        "M1": 6,
+        "M2": 10,
+        "M3": 10
+      }
+    },
+    {
+      "query_id": "q0109",
+      "query": "R(a,c)",
+      "answers": {
+        "M1": "ABSTAIN",
+        "M2": "NO",
+        "M3": "ABSTAIN"
+      },
+      "justifications": {
+        "M1": [],
+        "M2": [
+          "m2.p.subset_not_member"
+        ],
+        "M3": []
+      },
+      "contradiction": false,
+      "nogoods_created": [],
+      "configs_before": {
+        "M1": 6,
+        "M2": 10,
+        "M3": 10
+      }
+    },
+    {
+      "query_id": "q0110",
+      "query": "R(a,d)",
+      "answers": {
+        "M1": "ABSTAIN",
+        "M2": "ABSTAIN",
+        "M3": "ABSTAIN"
+      },
+      "justifications": {
+        "M1": [],
+        "M2": [],
+        "M3": []
+      },
+      "contradiction": false,
+      "nogoods_created": [],
+      "configs_before": {
+        "M1": 6,
+        "M2": 10,
+        "M3": 10
+      }
+    },
+    {
+      "query_id": "q0111",
+      "query": "R(b,a)",
+      "answers": {
+        "M1": "NO",
+        "M2": "NO",
+        "M3": "NO"
+      },
+      "justifications": {
+        "M1": [
+          "m1.p.antisymmetric"
+        ],
+        "M2": [
+          "m2.p.foundation"
+        ],
+        "M3": [
+          "m3.p.asymmetric"
+        ]
+      },
+      "contradiction": false,
+      "nogoods_created": [],
+      "configs_before": {
+        "M1": 6,
+        "M2": 10,
+        "M3": 10
+      }
+    },
+    {
+      "query_id": "q0112",
+      "query": "R(b,c)",
+      "answers": {
+        "M1": "YES",
+        "M2": "YES",
+        "M3": "YES"
+      },
+      "justifications": {
+        "M1": [],
+        "M2": [],
+        "M3": []
+      },
+      "contradiction": false,
+      "nogoods_created": [],
+      "configs_before": {
+        "M1": 6,
+        "M2": 10,
+        "M3": 10
+      }
+    },
+    {
+      "query_id": "q0113",
+      "query": "R(b,d)",
+      "answers": {
+        "M1": "ABSTAIN",
+        "M2": "NO",
+        "M3": "ABSTAIN"
+      },
+      "justifications": {
+        "M1": [],
+        "M2": [
+          "m2.p.subset_not_member"
+        ],
+        "M3": []
+      },
+      "contradiction": false,
+      "nogoods_created": [],
+      "configs_before": {
+        "M1": 6,
+        "M2": 10,
+        "M3": 10
+      }
+    },
+    {
+      "query_id": "q0114",
+      "query": "R(c,a)",
+      "answers": {
+        "M1": "ABSTAIN",
+        "M2": "ABSTAIN",
+        "M3": "ABSTAIN"
+      },
+      "justifications": {
+        "M1": [],
+        "M2": [],
+        "M3": []
+      },
+      "contradiction": false,
+      "nogoods_created": [],
+      "configs_before": {
+        "M1": 6,
+        "M2": 10,
+        "M3": 10
+      }
+    },
+    {
+      "query_id": "q0115",
+      "query": "R(c,b)",
+      "answers": {
+        "M1": "NO",
+        "M2": "NO",
+        "M3": "NO"
+      },
+      "justifications": {
+        "M1": [
+          "m1.p.antisymmetric"
+        ],
+        "M2": [
+          "m2.p.foundation"
+        ],
+        "M3": [
+          "m3.p.asymmetric"
+        ]
+      },
+      "contradiction": false,
+      "nogoods_created": [],
+      "configs_before": {
+        "M1": 6,
+        "M2": 10,
+        "M3": 10
+      }
+    },
+    {
+      "query_id": "q0116",
+      "query": "R(c,d)",
+      "answers": {
+        "M1": "YES",
+        "M2": "YES",
+        "M3": "YES"
+      },
+      "justifications": {
+        "M1": [],
+        "M2": [],
+        "M3": []
+      },
+      "contradiction": false,
+      "nogoods_created": [],
+      "configs_before": {
+        "M1": 6,
+        "M2": 10,
+        "M3": 10
+      }
+    },
+    {
+      "query_id": "q0117",
+      "query": "R(d,a)",
+      "answers": {
+        "M1": "ABSTAIN",
+        "M2": "ABSTAIN",
+        "M3": "ABSTAIN"
+      },
+      "justifications": {
+        "M1": [],
+        "M2": [],
+        "M3": []
+      },
+      "contradiction": false,
+      "nogoods_created": [],
+      "configs_before": {
+        "M1": 6,
+        "M2": 10,
+        "M3": 10
+      }
+    },
+    {
+      "query_id": "q0118",
+      "query": "R(d,b)",
+      "answers": {
+        "M1": "ABSTAIN",
+        "M2": "ABSTAIN",
+        "M3": "ABSTAIN"
+      },
+      "justifications": {
+        "M1": [],
+        "M2": [],
+        "M3": []
+      },
+      "contradiction": false,
+      "nogoods_created": [],
+      "configs_before": {
+        "M1": 6,
+        "M2": 10,
+        "M3": 10
+      }
+    },
+    {
+      "query_id": "q0119",
+      "query": "R(d,c)",
+      "answers": {
+        "M1": "NO",
+        "M2": "NO",
+        "M3": "NO"
+      },
+      "justifications": {
+        "M1": [
+          "m1.p.antisymmetric"
+        ],
+        "M2": [
+          "m2.p.foundation"
+        ],
+        "M3": [
+          "m3.p.asymmetric"
+        ]
+      },
+      "contradiction": false,
+      "nogoods_created": [],
+      "configs_before": {
+        "M1": 6,
+        "M2": 10,
+        "M3": 10
+      }
+    },
+    {
+      "query_id": "q0120",
+      "query": "R(a,b)",
+      "answers": {
+        "M1": "YES",
+        "M2": "YES",
+        "M3": "YES"
+      },
+      "justifications": {
+        "M1": [],
+        "M2": [],
+        "M3": []
+      },
+      "contradiction": false,
+      "nogoods_created": [],
+      "configs_before": {
+        "M1": 6,
+        "M2": 10,
+        "M3": 10
+      }
+    },
+    {
+      "query_id": "q0121",
+      "query": "R(a,c)",
+      "answers": {
+        "M1": "ABSTAIN",
+        "M2": "NO",
+        "M3": "ABSTAIN"
+      },
+      "justifications": {
+        "M1": [],
+        "M2": [
+          "m2.p.subset_not_member"
+        ],
+        "M3": []
+      },
+      "contradiction": false,
+      "nogoods_created": [],
+      "configs_before": {
+        "M1": 6,
+        "M2": 10,
+        "M3": 10
+      }
+    },
+    {
+      "query_id": "q0122",
+      "query": "R(a,d)",
+      "answers": {
+        "M1": "ABSTAIN",
+        "M2": "ABSTAIN",
+        "M3": "ABSTAIN"
+      },
+      "justifications": {
+        "M1": [],
+        "M2": [],
+        "M3": []
+      },
+      "contradiction": false,
+      "nogoods_created": [],
+      "configs_before": {
+        "M1": 6,
+        "M2": 10,
+        "M3": 10
+      }
+    },
+    {
+      "query_id": "q0123",
+      "query": "R(b,a)",
+      "answers": {
+        "M1": "NO",
+        "M2": "NO",
+        "M3": "NO"
+      },
+      "justifications": {
+        "M1": [
+          "m1.p.antisymmetric"
+        ],
+        "M2": [
+          "m2.p.foundation"
+        ],
+        "M3": [
+          "m3.p.asymmetric"
+        ]
+      },
+      "contradiction": false,
+      "nogoods_created": [],
+      "configs_before": {
+        "M1": 6,
+        "M2": 10,
+        "M3": 10
+      }
+    },
+    {
+      "query_id": "q0124",
+      "query": "R(b,c)",
+      "answers": {
+        "M1": "YES",
+        "M2": "YES",
+        "M3": "YES"
+      },
+      "justifications": {
+        "M1": [],
+        "M2": [],
+        "M3": []
+      },
+      "contradiction": false,
+      "nogoods_created": [],
+      "configs_before": {
+        "M1": 6,
+        "M2": 10,
+        "M3": 10
+      }
+    },
+    {
+      "query_id": "q0125",
+      "query": "R(b,d)",
+      "answers": {
+        "M1": "ABSTAIN",
+        "M2": "NO",
+        "M3": "ABSTAIN"
+      },
+      "justifications": {
+        "M1": [],
+        "M2": [
+          "m2.p.subset_not_member"
+        ],
+        "M3": []
+      },
+      "contradiction": false,
+      "nogoods_created": [],
+      "configs_before": {
+        "M1": 6,
+        "M2": 10,
+        "M3": 10
+      }
+    },
+    {
+      "query_id": "q0126",
+      "query": "R(c,a)",
+      "answers": {
+        "M1": "ABSTAIN",
+        "M2": "ABSTAIN",
+        "M3": "ABSTAIN"
+      },
+      "justifications": {
+        "M1": [],
+        "M2": [],
+        "M3": []
+      },
+      "contradiction": false,
+      "nogoods_created": [],
+      "configs_before": {
+        "M1": 6,
+        "M2": 10,
+        "M3": 10
+      }
+    },
+    {
+      "query_id": "q0127",
+      "query": "R(c,b)",
+      "answers": {
+        "M1": "NO",
+        "M2": "NO",
+        "M3": "NO"
+      },
+      "justifications": {
+        "M1": [
+          "m1.p.antisymmetric"
+        ],
+        "M2": [
+          "m2.p.foundation"
+        ],
+        "M3": [
+          "m3.p.asymmetric"
+        ]
+      },
+      "contradiction": false,
+      "nogoods_created": [],
+      "configs_before": {
+        "M1": 6,
+        "M2": 10,
+        "M3": 10
+      }
+    },
+    {
+      "query_id": "q0128",
+      "query": "R(c,d)",
+      "answers": {
+        "M1": "YES",
+        "M2": "YES",
+        "M3": "YES"
+      },
+      "justifications": {
+        "M1": [],
+        "M2": [],
+        "M3": []
+      },
+      "contradiction": false,
+      "nogoods_created": [],
+      "configs_before": {
+        "M1": 6,
+        "M2": 10,
+        "M3": 10
+      }
+    },
+    {
+      "query_id": "q0129",
+      "query": "R(d,a)",
+      "answers": {
+        "M1": "ABSTAIN",
+        "M2": "ABSTAIN",
+        "M3": "ABSTAIN"
+      },
+      "justifications": {
+        "M1": [],
+        "M2": [],
+        "M3": []
+      },
+      "contradiction": false,
+      "nogoods_created": [],
+      "configs_before": {
+        "M1": 6,
+        "M2": 10,
+        "M3": 10
+      }
+    },
+    {
+      "query_id": "q0130",
+      "query": "R(d,b)",
+      "answers": {
+        "M1": "ABSTAIN",
+        "M2": "ABSTAIN",
+        "M3": "ABSTAIN"
+      },
+      "justifications": {
+        "M1": [],
+        "M2": [],
+        "M3": []
+      },
+      "contradiction": false,
+      "nogoods_created": [],
+      "configs_before": {
+        "M1": 6,
+        "M2": 10,
+        "M3": 10
+      }
+    },
+    {
+      "query_id": "q0131",
+      "query": "R(d,c)",
+      "answers": {
+        "M1": "NO",
+        "M2": "NO",
+        "M3": "NO"
+      },
+      "justifications": {
+        "M1": [
+          "m1.p.antisymmetric"
+        ],
+        "M2": [
+          "m2.p.foundation"
+        ],
+        "M3": [
+          "m3.p.asymmetric"
+        ]
+      },
+      "contradiction": false,
+      "nogoods_created": [],
+      "configs_before": {
+        "M1": 6,
+        "M2": 10,
+        "M3": 10
+      }
+    },
+    {
+      "query_id": "q0132",
+      "query": "R(a,b)",
+      "answers": {
+        "M1": "YES",
+        "M2": "YES",
+        "M3": "YES"
+      },
+      "justifications": {
+        "M1": [],
+        "M2": [],
+        "M3": []
+      },
+      "contradiction": false,
+      "nogoods_created": [],
+      "configs_before": {
+        "M1": 6,
+        "M2": 10,
+        "M3": 10
+      }
+    },
+    {
+      "query_id": "q0133",
+      "query": "R(a,c)",
+      "answers": {
+        "M1": "ABSTAIN",
+        "M2": "NO",
+        "M3": "ABSTAIN"
+      },
+      "justifications": {
+        "M1": [],
+        "M2": [
+          "m2.p.subset_not_member"
+        ],
+        "M3": []
+      },
+      "contradiction": false,
+      "nogoods_created": [],
+      "configs_before": {
+        "M1": 6,
+        "M2": 10,
+        "M3": 10
+      }
+    },
+    {
+      "query_id": "q0134",
+      "query": "R(a,d)",
+      "answers": {
+        "M1": "ABSTAIN",
+        "M2": "ABSTAIN",
+        "M3": "ABSTAIN"
+      },
+      "justifications": {
+        "M1": [],
+        "M2": [],
+        "M3": []
+      },
+      "contradiction": false,
+      "nogoods_created": [],
+      "configs_before": {
+        "M1": 6,
+        "M2": 10,
+        "M3": 10
+      }
+    },
+    {
+      "query_id": "q0135",
+      "query": "R(b,a)",
+      "answers": {
+        "M1": "NO",
+        "M2": "NO",
+        "M3": "NO"
+      },
+      "justifications": {
+        "M1": [
+          "m1.p.antisymmetric"
+        ],
+        "M2": [
+          "m2.p.foundation"
+        ],
+        "M3": [
+          "m3.p.asymmetric"
+        ]
+      },
+      "contradiction": false,
+      "nogoods_created": [],
+      "configs_before": {
+        "M1": 6,
+        "M2": 10,
+        "M3": 10
+      }
+    },
+    {
+      "query_id": "q0136",
+      "query": "R(b,c)",
+      "answers": {
+        "M1": "YES",
+        "M2": "YES",
+        "M3": "YES"
+      },
+      "justifications": {
+        "M1": [],
+        "M2": [],
+        "M3": []
+      },
+      "contradiction": false,
+      "nogoods_created": [],
+      "configs_before": {
+        "M1": 6,
+        "M2": 10,
+        "M3": 10
+      }
+    },
+    {
+      "query_id": "q0137",
+      "query": "R(b,d)",
+      "answers": {
+        "M1": "ABSTAIN",
+        "M2": "NO",
+        "M3": "ABSTAIN"
+      },
+      "justifications": {
+        "M1": [],
+        "M2": [
+          "m2.p.subset_not_member"
+        ],
+        "M3": []
+      },
+      "contradiction": false,
+      "nogoods_created": [],
+      "configs_before": {
+        "M1": 6,
+        "M2": 10,
+        "M3": 10
+      }
+    },
+    {
+      "query_id": "q0138",
+      "query": "R(c,a)",
+      "answers": {
+        "M1": "ABSTAIN",
+        "M2": "ABSTAIN",
+        "M3": "ABSTAIN"
+      },
+      "justifications": {
+        "M1": [],
+        "M2": [],
+        "M3": []
+      },
+      "contradiction": false,
+      "nogoods_created": [],
+      "configs_before": {
+        "M1": 6,
+        "M2": 10,
+        "M3": 10
+      }
+    },
+    {
+      "query_id": "q0139",
+      "query": "R(c,b)",
+      "answers": {
+        "M1": "NO",
+        "M2": "NO",
+        "M3": "NO"
+      },
+      "justifications": {
+        "M1": [
+          "m1.p.antisymmetric"
+        ],
+        "M2": [
+          "m2.p.foundation"
+        ],
+        "M3": [
+          "m3.p.asymmetric"
+        ]
+      },
+      "contradiction": false,
+      "nogoods_created": [],
+      "configs_before": {
+        "M1": 6,
+        "M2": 10,
+        "M3": 10
+      }
+    },
+    {
+      "query_id": "q0140",
+      "query": "R(c,d)",
+      "answers": {
+        "M1": "YES",
+        "M2": "YES",
+        "M3": "YES"
+      },
+      "justifications": {
+        "M1": [],
+        "M2": [],
+        "M3": []
+      },
+      "contradiction": false,
+      "nogoods_created": [],
+      "configs_before": {
+        "M1": 6,
+        "M2": 10,
+        "M3": 10
+      }
+    },
+    {
+      "query_id": "q0141",
+      "query": "R(d,a)",
+      "answers": {
+        "M1": "ABSTAIN",
+        "M2": "ABSTAIN",
+        "M3": "ABSTAIN"
+      },
+      "justifications": {
+        "M1": [],
+        "M2": [],
+        "M3": []
+      },
+      "contradiction": false,
+      "nogoods_created": [],
+      "configs_before": {
+        "M1": 6,
+        "M2": 10,
+        "M3": 10
+      }
+    },
+    {
+      "query_id": "q0142",
+      "query": "R(d,b)",
+      "answers": {
+        "M1": "ABSTAIN",
+        "M2": "ABSTAIN",
+        "M3": "ABSTAIN"
+      },
+      "justifications": {
+        "M1": [],
+        "M2": [],
+        "M3": []
+      },
+      "contradiction": false,
+      "nogoods_created": [],
+      "configs_before": {
+        "M1": 6,
+        "M2": 10,
+        "M3": 10
+      }
+    },
+    {
+      "query_id": "q0143",
+      "query": "R(d,c)",
+      "answers": {
+        "M1": "NO",
+        "M2": "NO",
+        "M3": "NO"
+      },
+      "justifications": {
+        "M1": [
+          "m1.p.antisymmetric"
+        ],
+        "M2": [
+          "m2.p.foundation"
+        ],
+        "M3": [
+          "m3.p.asymmetric"
+        ]
+      },
+      "contradiction": false,
+      "nogoods_created": [],
+      "configs_before": {
+        "M1": 6,
+        "M2": 10,
+        "M3": 10
+      }
+    },
+    {
+      "query_id": "q0144",
+      "query": "R(a,b)",
+      "answers": {
+        "M1": "YES",
+        "M2": "YES",
+        "M3": "YES"
+      },
+      "justifications": {
+        "M1": [],
+        "M2": [],
+        "M3": []
+      },
+      "contradiction": false,
+      "nogoods_created": [],
+      "configs_before": {
+        "M1": 6,
+        "M2": 10,
+        "M3": 10
+      }
+    },
+    {
+      "query_id": "q0145",
+      "query": "R(a,c)",
+      "answers": {
+        "M1": "ABSTAIN",
+        "M2": "NO",
+        "M3": "ABSTAIN"
+      },
+      "justifications": {
+        "M1": [],
+        "M2": [
+          "m2.p.subset_not_member"
+        ],
+        "M3": []
+      },
+      "contradiction": false,
+      "nogoods_created": [],
+      "configs_before": {
+        "M1": 6,
+        "M2": 10,
+        "M3": 10
+      }
+    },
+    {
+      "query_id": "q0146",
+      "query": "R(a,d)",
+      "answers": {
+        "M1": "ABSTAIN",
+        "M2": "ABSTAIN",
+        "M3": "ABSTAIN"
+      },
+      "justifications": {
+        "M1": [],
+        "M2": [],
+        "M3": []
+      },
+      "contradiction": false,
+      "nogoods_created": [],
+      "configs_before": {
+        "M1": 6,
+        "M2": 10,
+        "M3": 10
+      }
+    },
+    {
+      "query_id": "q0147",
+      "query": "R(b,a)",
+      "answers": {
+        "M1": "NO",
+        "M2": "NO",
+        "M3": "NO"
+      },
+      "justifications": {
+        "M1": [
+          "m1.p.antisymmetric"
+        ],
+        "M2": [
+          "m2.p.foundation"
+        ],
+        "M3": [
+          "m3.p.asymmetric"
+        ]
+      },
+      "contradiction": false,
+      "nogoods_created": [],
+      "configs_before": {
+        "M1": 6,
+        "M2": 10,
+        "M3": 10
+      }
+    },
+    {
+      "query_id": "q0148",
+      "query": "R(b,c)",
+      "answers": {
+        "M1": "YES",
+        "M2": "YES",
+        "M3": "YES"
+      },
+      "justifications": {
+        "M1": [],
+        "M2": [],
+        "M3": []
+      },
+      "contradiction": false,
+      "nogoods_created": [],
+      "configs_before": {
+        "M1": 6,
+        "M2": 10,
+        "M3": 10
+      }
+    },
+    {
+      "query_id": "q0149",
+      "query": "R(b,d)",
+      "answers": {
+        "M1": "ABSTAIN",
+        "M2": "NO",
+        "M3": "ABSTAIN"
+      },
+      "justifications": {
+        "M1": [],
+        "M2": [
+          "m2.p.subset_not_member"
+        ],
+        "M3": []
+      },
+      "contradiction": false,
+      "nogoods_created": [],
+      "configs_before": {
+        "M1": 6,
+        "M2": 10,
+        "M3": 10
+      }
+    },
+    {
+      "query_id": "q0150",
+      "query": "R(c,a)",
+      "answers": {
+        "M1": "ABSTAIN",
+        "M2": "ABSTAIN",
+        "M3": "ABSTAIN"
+      },
+      "justifications": {
+        "M1": [],
+        "M2": [],
+        "M3": []
+      },
+      "contradiction": false,
+      "nogoods_created": [],
+      "configs_before": {
+        "M1": 6,
+        "M2": 10,
+        "M3": 10
+      }
+    },
+    {
+      "query_id": "q0151",
+      "query": "R(c,b)",
+      "answers": {
+        "M1": "NO",
+        "M2": "NO",
+        "M3": "NO"
+      },
+      "justifications": {
+        "M1": [
+          "m1.p.antisymmetric"
+        ],
+        "M2": [
+          "m2.p.foundation"
+        ],
+        "M3": [
+          "m3.p.asymmetric"
+        ]
+      },
+      "contradiction": false,
+      "nogoods_created": [],
+      "configs_before": {
+        "M1": 6,
+        "M2": 10,
+        "M3": 10
+      }
+    },
+    {
+      "query_id": "q0152",
+      "query": "R(c,d)",
+      "answers": {
+        "M1": "YES",
+        "M2": "YES",
+        "M3": "YES"
+      },
+      "justifications": {
+        "M1": [],
+        "M2": [],
+        "M3": []
+      },
+      "contradiction": false,
+      "nogoods_created": [],
+      "configs_before": {
+        "M1": 6,
+        "M2": 10,
+        "M3": 10
+      }
+    },
+    {
+      "query_id": "q0153",
+      "query": "R(d,a)",
+      "answers": {
+        "M1": "ABSTAIN",
+        "M2": "ABSTAIN",
+        "M3": "ABSTAIN"
+      },
+      "justifications": {
+        "M1": [],
+        "M2": [],
+        "M3": []
+      },
+      "contradiction": false,
+      "nogoods_created": [],
+      "configs_before": {
+        "M1": 6,
+        "M2": 10,
+        "M3": 10
+      }
+    },
+    {
+      "query_id": "q0154",
+      "query": "R(d,b)",
+      "answers": {
+        "M1": "ABSTAIN",
+        "M2": "ABSTAIN",
+        "M3": "ABSTAIN"
+      },
+      "justifications": {
+        "M1": [],
+        "M2": [],
+        "M3": []
+      },
+      "contradiction": false,
+      "nogoods_created": [],
+      "configs_before": {
+        "M1": 6,
+        "M2": 10,
+        "M3": 10
+      }
+    },
+    {
+      "query_id": "q0155",
+      "query": "R(d,c)",
+      "answers": {
+        "M1": "NO",
+        "M2": "NO",
+        "M3": "NO"
+      },
+      "justifications": {
+        "M1": [
+          "m1.p.antisymmetric"
+        ],
+        "M2": [
+          "m2.p.foundation"
+        ],
+        "M3": [
+          "m3.p.asymmetric"
+        ]
+      },
+      "contradiction": false,
+      "nogoods_created": [],
+      "configs_before": {
+        "M1": 6,
+        "M2": 10,
+        "M3": 10
+      }
+    },
+    {
+      "query_id": "q0156",
+      "query": "R(a,b)",
+      "answers": {
+        "M1": "YES",
+        "M2": "YES",
+        "M3": "YES"
+      },
+      "justifications": {
+        "M1": [],
+        "M2": [],
+        "M3": []
+      },
+      "contradiction": false,
+      "nogoods_created": [],
+      "configs_before": {
+        "M1": 6,
+        "M2": 10,
+        "M3": 10
+      }
+    },
+    {
+      "query_id": "q0157",
+      "query": "R(a,c)",
+      "answers": {
+        "M1": "ABSTAIN",
+        "M2": "NO",
+        "M3": "ABSTAIN"
+      },
+      "justifications": {
+        "M1": [],
+        "M2": [
+          "m2.p.subset_not_member"
+        ],
+        "M3": []
+      },
+      "contradiction": false,
+      "nogoods_created": [],
+      "configs_before": {
+        "M1": 6,
+        "M2": 10,
+        "M3": 10
+      }
+    },
+    {
+      "query_id": "q0158",
+      "query": "R(a,d)",
+      "answers": {
+        "M1": "ABSTAIN",
+        "M2": "ABSTAIN",
+        "M3": "ABSTAIN"
+      },
+      "justifications": {
+        "M1": [],
+        "M2": [],
+        "M3": []
+      },
+      "contradiction": false,
+      "nogoods_created": [],
+      "configs_before": {
+        "M1": 6,
+        "M2": 10,
+        "M3": 10
+      }
+    },
+    {
+      "query_id": "q0159",
+      "query": "R(b,a)",
+      "answers": {
+        "M1": "NO",
+        "M2": "NO",
+        "M3": "NO"
+      },
+      "justifications": {
+        "M1": [
+          "m1.p.antisymmetric"
+        ],
+        "M2": [
+          "m2.p.foundation"
+        ],
+        "M3": [
+          "m3.p.asymmetric"
+        ]
+      },
+      "contradiction": false,
+      "nogoods_created": [],
+      "configs_before": {
+        "M1": 6,
+        "M2": 10,
+        "M3": 10
+      }
+    },
+    {
+      "query_id": "q0160",
+      "query": "R(b,c)",
+      "answers": {
+        "M1": "YES",
+        "M2": "YES",
+        "M3": "YES"
+      },
+      "justifications": {
+        "M1": [],
+        "M2": [],
+        "M3": []
+      },
+      "contradiction": false,
+      "nogoods_created": [],
+      "configs_before": {
+        "M1": 6,
+        "M2": 10,
+        "M3": 10
+      }
+    },
+    {
+      "query_id": "q0161",
+      "query": "R(b,d)",
+      "answers": {
+        "M1": "ABSTAIN",
+        "M2": "NO",
+        "M3": "ABSTAIN"
+      },
+      "justifications": {
+        "M1": [],
+        "M2": [
+          "m2.p.subset_not_member"
+        ],
+        "M3": []
+      },
+      "contradiction": false,
+      "nogoods_created": [],
+      "configs_before": {
+        "M1": 6,
+        "M2": 10,
+        "M3": 10
+      }
+    },
+    {
+      "query_id": "q0162",
+      "query": "R(c,a)",
+      "answers": {
+        "M1": "ABSTAIN",
+        "M2": "ABSTAIN",
+        "M3": "ABSTAIN"
+      },
+      "justifications": {
+        "M1": [],
+        "M2": [],
+        "M3": []
+      },
+      "contradiction": false,
+      "nogoods_created": [],
+      "configs_before": {
+        "M1": 6,
+        "M2": 10,
+        "M3": 10
+      }
+    },
+    {
+      "query_id": "q0163",
+      "query": "R(c,b)",
+      "answers": {
+        "M1": "NO",
+        "M2": "NO",
+        "M3": "NO"
+      },
+      "justifications": {
+        "M1": [
+          "m1.p.antisymmetric"
+        ],
+        "M2": [
+          "m2.p.foundation"
+        ],
+        "M3": [
+          "m3.p.asymmetric"
+        ]
+      },
+      "contradiction": false,
+      "nogoods_created": [],
+      "configs_before": {
+        "M1": 6,
+        "M2": 10,
+        "M3": 10
+      }
+    },
+    {
+      "query_id": "q0164",
+      "query": "R(c,d)",
+      "answers": {
+        "M1": "YES",
+        "M2": "YES",
+        "M3": "YES"
+      },
+      "justifications": {
+        "M1": [],
+        "M2": [],
+        "M3": []
+      },
+      "contradiction": false,
+      "nogoods_created": [],
+      "configs_before": {
+        "M1": 6,
+        "M2": 10,
+        "M3": 10
+      }
+    },
+    {
+      "query_id": "q0165",
+      "query": "R(d,a)",
+      "answers": {
+        "M1": "ABSTAIN",
+        "M2": "ABSTAIN",
+        "M3": "ABSTAIN"
+      },
+      "justifications": {
+        "M1": [],
+        "M2": [],
+        "M3": []
+      },
+      "contradiction": false,
+      "nogoods_created": [],
+      "configs_before": {
+        "M1": 6,
+        "M2": 10,
+        "M3": 10
+      }
+    },
+    {
+      "query_id": "q0166",
+      "query": "R(d,b)",
+      "answers": {
+        "M1": "ABSTAIN",
+        "M2": "ABSTAIN",
+        "M3": "ABSTAIN"
+      },
+      "justifications": {
+        "M1": [],
+        "M2": [],
+        "M3": []
+      },
+      "contradiction": false,
+      "nogoods_created": [],
+      "configs_before": {
+        "M1": 6,
+        "M2": 10,
+        "M3": 10
+      }
+    },
+    {
+      "query_id": "q0167",
+      "query": "R(d,c)",
+      "answers": {
+        "M1": "NO",
+        "M2": "NO",
+        "M3": "NO"
+      },
+      "justifications": {
+        "M1": [
+          "m1.p.antisymmetric"
+        ],
+        "M2": [
+          "m2.p.foundation"
+        ],
+        "M3": [
+          "m3.p.asymmetric"
+        ]
+      },
+      "contradiction": false,
+      "nogoods_created": [],
+      "configs_before": {
+        "M1": 6,
+        "M2": 10,
+        "M3": 10
+      }
+    },
+    {
+      "query_id": "q0168",
+      "query": "R(a,b)",
+      "answers": {
+        "M1": "YES",
+        "M2": "YES",
+        "M3": "YES"
+      },
+      "justifications": {
+        "M1": [],
+        "M2": [],
+        "M3": []
+      },
+      "contradiction": false,
+      "nogoods_created": [],
+      "configs_before": {
+        "M1": 6,
+        "M2": 10,
+        "M3": 10
+      }
+    },
+    {
+      "query_id": "q0169",
+      "query": "R(a,c)",
+      "answers": {
+        "M1": "ABSTAIN",
+        "M2": "NO",
+        "M3": "ABSTAIN"
+      },
+      "justifications": {
+        "M1": [],
+        "M2": [
+          "m2.p.subset_not_member"
+        ],
+        "M3": []
+      },
+      "contradiction": false,
+      "nogoods_created": [],
+      "configs_before": {
+        "M1": 6,
+        "M2": 10,
+        "M3": 10
+      }
+    },
+    {
+      "query_id": "q0170",
+      "query": "R(a,d)",
+      "answers": {
+        "M1": "ABSTAIN",
+        "M2": "ABSTAIN",
+        "M3": "ABSTAIN"
+      },
+      "justifications": {
+        "M1": [],
+        "M2": [],
+        "M3": []
+      },
+      "contradiction": false,
+      "nogoods_created": [],
+      "configs_before": {
+        "M1": 6,
+        "M2": 10,
+        "M3": 10
+      }
+    },
+    {
+      "query_id": "q0171",
+      "query": "R(b,a)",
+      "answers": {
+        "M1": "NO",
+        "M2": "NO",
+        "M3": "NO"
+      },
+      "justifications": {
+        "M1": [
+          "m1.p.antisymmetric"
+        ],
+        "M2": [
+          "m2.p.foundation"
+        ],
+        "M3": [
+          "m3.p.asymmetric"
+        ]
+      },
+      "contradiction": false,
+      "nogoods_created": [],
+      "configs_before": {
+        "M1": 6,
+        "M2": 10,
+        "M3": 10
+      }
+    },
+    {
+      "query_id": "q0172",
+      "query": "R(b,c)",
+      "answers": {
+        "M1": "YES",
+        "M2": "YES",
+        "M3": "YES"
+      },
+      "justifications": {
+        "M1": [],
+        "M2": [],
+        "M3": []
+      },
+      "contradiction": false,
+      "nogoods_created": [],
+      "configs_before": {
+        "M1": 6,
+        "M2": 10,
+        "M3": 10
+      }
+    },
+    {
+      "query_id": "q0173",
+      "query": "R(b,d)",
+      "answers": {
+        "M1": "ABSTAIN",
+        "M2": "NO",
+        "M3": "ABSTAIN"
+      },
+      "justifications": {
+        "M1": [],
+        "M2": [
+          "m2.p.subset_not_member"
+        ],
+        "M3": []
+      },
+      "contradiction": false,
+      "nogoods_created": [],
+      "configs_before": {
+        "M1": 6,
+        "M2": 10,
+        "M3": 10
+      }
+    },
+    {
+      "query_id": "q0174",
+      "query": "R(c,a)",
+      "answers": {
+        "M1": "ABSTAIN",
+        "M2": "ABSTAIN",
+        "M3": "ABSTAIN"
+      },
+      "justifications": {
+        "M1": [],
+        "M2": [],
+        "M3": []
+      },
+      "contradiction": false,
+      "nogoods_created": [],
+      "configs_before": {
+        "M1": 6,
+        "M2": 10,
+        "M3": 10
+      }
+    },
+    {
+      "query_id": "q0175",
+      "query": "R(c,b)",
+      "answers": {
+        "M1": "NO",
+        "M2": "NO",
+        "M3": "NO"
+      },
+      "justifications": {
+        "M1": [
+          "m1.p.antisymmetric"
+        ],
+        "M2": [
+          "m2.p.foundation"
+        ],
+        "M3": [
+          "m3.p.asymmetric"
+        ]
+      },
+      "contradiction": false,
+      "nogoods_created": [],
+      "configs_before": {
+        "M1": 6,
+        "M2": 10,
+        "M3": 10
+      }
+    },
+    {
+      "query_id": "q0176",
+      "query": "R(c,d)",
+      "answers": {
+        "M1": "YES",
+        "M2": "YES",
+        "M3": "YES"
+      },
+      "justifications": {
+        "M1": [],
+        "M2": [],
+        "M3": []
+      },
+      "contradiction": false,
+      "nogoods_created": [],
+      "configs_before": {
+        "M1": 6,
+        "M2": 10,
+        "M3": 10
+      }
+    },
+    {
+      "query_id": "q0177",
+      "query": "R(d,a)",
+      "answers": {
+        "M1": "ABSTAIN",
+        "M2": "ABSTAIN",
+        "M3": "ABSTAIN"
+      },
+      "justifications": {
+        "M1": [],
+        "M2": [],
+        "M3": []
+      },
+      "contradiction": false,
+      "nogoods_created": [],
+      "configs_before": {
+        "M1": 6,
+        "M2": 10,
+        "M3": 10
+      }
+    },
+    {
+      "query_id": "q0178",
+      "query": "R(d,b)",
+      "answers": {
+        "M1": "ABSTAIN",
+        "M2": "ABSTAIN",
+        "M3": "ABSTAIN"
+      },
+      "justifications": {
+        "M1": [],
+        "M2": [],
+        "M3": []
+      },
+      "contradiction": false,
+      "nogoods_created": [],
+      "configs_before": {
+        "M1": 6,
+        "M2": 10,
+        "M3": 10
+      }
+    },
+    {
+      "query_id": "q0179",
+      "query": "R(d,c)",
+      "answers": {
+        "M1": "NO",
+        "M2": "NO",
+        "M3": "NO"
+      },
+      "justifications": {
+        "M1": [
+          "m1.p.antisymmetric"
+        ],
+        "M2": [
+          "m2.p.foundation"
+        ],
+        "M3": [
+          "m3.p.asymmetric"
+        ]
+      },
+      "contradiction": false,
+      "nogoods_created": [],
+      "configs_before": {
+        "M1": 6,
+        "M2": 10,
+        "M3": 10
+      }
+    },
+    {
+      "query_id": "q0180",
+      "query": "R(a,b)",
+      "answers": {
+        "M1": "YES",
+        "M2": "YES",
+        "M3": "YES"
+      },
+      "justifications": {
+        "M1": [],
+        "M2": [],
+        "M3": []
+      },
+      "contradiction": false,
+      "nogoods_created": [],
+      "configs_before": {
+        "M1": 6,
+        "M2": 10,
+        "M3": 10
+      }
+    },
+    {
+      "query_id": "q0181",
+      "query": "R(a,c)",
+      "answers": {
+        "M1": "ABSTAIN",
+        "M2": "NO",
+        "M3": "ABSTAIN"
+      },
+      "justifications": {
+        "M1": [],
+        "M2": [
+          "m2.p.subset_not_member"
+        ],
+        "M3": []
+      },
+      "contradiction": false,
+      "nogoods_created": [],
+      "configs_before": {
+        "M1": 6,
+        "M2": 10,
+        "M3": 10
+      }
+    },
+    {
+      "query_id": "q0182",
+      "query": "R(a,d)",
+      "answers": {
+        "M1": "ABSTAIN",
+        "M2": "ABSTAIN",
+        "M3": "ABSTAIN"
+      },
+      "justifications": {
+        "M1": [],
+        "M2": [],
+        "M3": []
+      },
+      "contradiction": false,
+      "nogoods_created": [],
+      "configs_before": {
+        "M1": 6,
+        "M2": 10,
+        "M3": 10
+      }
+    },
+    {
+      "query_id": "q0183",
+      "query": "R(b,a)",
+      "answers": {
+        "M1": "NO",
+        "M2": "NO",
+        "M3": "NO"
+      },
+      "justifications": {
+        "M1": [
+          "m1.p.antisymmetric"
+        ],
+        "M2": [
+          "m2.p.foundation"
+        ],
+        "M3": [
+          "m3.p.asymmetric"
+        ]
+      },
+      "contradiction": false,
+      "nogoods_created": [],
+      "configs_before": {
+        "M1": 6,
+        "M2": 10,
+        "M3": 10
+      }
+    },
+    {
+      "query_id": "q0184",
+      "query": "R(b,c)",
+      "answers": {
+        "M1": "YES",
+        "M2": "YES",
+        "M3": "YES"
+      },
+      "justifications": {
+        "M1": [],
+        "M2": [],
+        "M3": []
+      },
+      "contradiction": false,
+      "nogoods_created": [],
+      "configs_before": {
+        "M1": 6,
+        "M2": 10,
+        "M3": 10
+      }
+    },
+    {
+      "query_id": "q0185",
+      "query": "R(b,d)",
+      "answers": {
+        "M1": "ABSTAIN",
+        "M2": "NO",
+        "M3": "ABSTAIN"
+      },
+      "justifications": {
+        "M1": [],
+        "M2": [
+          "m2.p.subset_not_member"
+        ],
+        "M3": []
+      },
+      "contradiction": false,
+      "nogoods_created": [],
+      "configs_before": {
+        "M1": 6,
+        "M2": 10,
+        "M3": 10
+      }
+    },
+    {
+      "query_id": "q0186",
+      "query": "R(c,a)",
+      "answers": {
+        "M1": "ABSTAIN",
+        "M2": "ABSTAIN",
+        "M3": "ABSTAIN"
+      },
+      "justifications": {
+        "M1": [],
+        "M2": [],
+        "M3": []
+      },
+      "contradiction": false,
+      "nogoods_created": [],
+      "configs_before": {
+        "M1": 6,
+        "M2": 10,
+        "M3": 10
+      }
+    },
+    {
+      "query_id": "q0187",
+      "query": "R(c,b)",
+      "answers": {
+        "M1": "NO",
+        "M2": "NO",
+        "M3": "NO"
+      },
+      "justifications": {
+        "M1": [
+          "m1.p.antisymmetric"
+        ],
+        "M2": [
+          "m2.p.foundation"
+        ],
+        "M3": [
+          "m3.p.asymmetric"
+        ]
+      },
+      "contradiction": false,
+      "nogoods_created": [],
+      "configs_before": {
+        "M1": 6,
+        "M2": 10,
+        "M3": 10
+      }
+    },
+    {
+      "query_id": "q0188",
+      "query": "R(c,d)",
+      "answers": {
+        "M1": "YES",
+        "M2": "YES",
+        "M3": "YES"
+      },
+      "justifications": {
+        "M1": [],
+        "M2": [],
+        "M3": []
+      },
+      "contradiction": false,
+      "nogoods_created": [],
+      "configs_before": {
+        "M1": 6,
+        "M2": 10,
+        "M3": 10
+      }
+    },
+    {
+      "query_id": "q0189",
+      "query": "R(d,a)",
+      "answers": {
+        "M1": "ABSTAIN",
+        "M2": "ABSTAIN",
+        "M3": "ABSTAIN"
+      },
+      "justifications": {
+        "M1": [],
+        "M2": [],
+        "M3": []
+      },
+      "contradiction": false,
+      "nogoods_created": [],
+      "configs_before": {
+        "M1": 6,
+        "M2": 10,
+        "M3": 10
+      }
+    },
+    {
+      "query_id": "q0190",
+      "query": "R(d,b)",
+      "answers": {
+        "M1": "ABSTAIN",
+        "M2": "ABSTAIN",
+        "M3": "ABSTAIN"
+      },
+      "justifications": {
+        "M1": [],
+        "M2": [],
+        "M3": []
+      },
+      "contradiction": false,
+      "nogoods_created": [],
+      "configs_before": {
+        "M1": 6,
+        "M2": 10,
+        "M3": 10
+      }
+    },
+    {
+      "query_id": "q0191",
+      "query": "R(d,c)",
+      "answers": {
+        "M1": "NO",
+        "M2": "NO",
+        "M3": "NO"
+      },
+      "justifications": {
+        "M1": [
+          "m1.p.antisymmetric"
+        ],
+        "M2": [
+          "m2.p.foundation"
+        ],
+        "M3": [
+          "m3.p.asymmetric"
+        ]
+      },
+      "contradiction": false,
+      "nogoods_created": [],
+      "configs_before": {
+        "M1": 6,
+        "M2": 10,
+        "M3": 10
+      }
+    },
+    {
+      "query_id": "q0192",
+      "query": "R(a,b)",
+      "answers": {
+        "M1": "YES",
+        "M2": "YES",
+        "M3": "YES"
+      },
+      "justifications": {
+        "M1": [],
+        "M2": [],
+        "M3": []
+      },
+      "contradiction": false,
+      "nogoods_created": [],
+      "configs_before": {
+        "M1": 6,
+        "M2": 10,
+        "M3": 10
+      }
+    },
+    {
+      "query_id": "q0193",
+      "query": "R(a,c)",
+      "answers": {
+        "M1": "ABSTAIN",
+        "M2": "NO",
+        "M3": "ABSTAIN"
+      },
+      "justifications": {
+        "M1": [],
+        "M2": [
+          "m2.p.subset_not_member"
+        ],
+        "M3": []
+      },
+      "contradiction": false,
+      "nogoods_created": [],
+      "configs_before": {
+        "M1": 6,
+        "M2": 10,
+        "M3": 10
+      }
+    },
+    {
+      "query_id": "q0194",
+      "query": "R(a,d)",
+      "answers": {
+        "M1": "ABSTAIN",
+        "M2": "ABSTAIN",
+        "M3": "ABSTAIN"
+      },
+      "justifications": {
+        "M1": [],
+        "M2": [],
+        "M3": []
+      },
+      "contradiction": false,
+      "nogoods_created": [],
+      "configs_before": {
+        "M1": 6,
+        "M2": 10,
+        "M3": 10
+      }
+    },
+    {
+      "query_id": "q0195",
+      "query": "R(b,a)",
+      "answers": {
+        "M1": "NO",
+        "M2": "NO",
+        "M3": "NO"
+      },
+      "justifications": {
+        "M1": [
+          "m1.p.antisymmetric"
+        ],
+        "M2": [
+          "m2.p.foundation"
+        ],
+        "M3": [
+          "m3.p.asymmetric"
+        ]
+      },
+      "contradiction": false,
+      "nogoods_created": [],
+      "configs_before": {
+        "M1": 6,
+        "M2": 10,
+        "M3": 10
+      }
+    },
+    {
+      "query_id": "q0196",
+      "query": "R(b,c)",
+      "answers": {
+        "M1": "YES",
+        "M2": "YES",
+        "M3": "YES"
+      },
+      "justifications": {
+        "M1": [],
+        "M2": [],
+        "M3": []
+      },
+      "contradiction": false,
+      "nogoods_created": [],
+      "configs_before": {
+        "M1": 6,
+        "M2": 10,
+        "M3": 10
+      }
+    },
+    {
+      "query_id": "q0197",
+      "query": "R(b,d)",
+      "answers": {
+        "M1": "ABSTAIN",
+        "M2": "NO",
+        "M3": "ABSTAIN"
+      },
+      "justifications": {
+        "M1": [],
+        "M2": [
+          "m2.p.subset_not_member"
+        ],
+        "M3": []
+      },
+      "contradiction": false,
+      "nogoods_created": [],
+      "configs_before": {
+        "M1": 6,
+        "M2": 10,
+        "M3": 10
+      }
+    },
+    {
+      "query_id": "q0198",
+      "query": "R(c,a)",
+      "answers": {
+        "M1": "ABSTAIN",
+        "M2": "ABSTAIN",
+        "M3": "ABSTAIN"
+      },
+      "justifications": {
+        "M1": [],
+        "M2": [],
+        "M3": []
+      },
+      "contradiction": false,
+      "nogoods_created": [],
+      "configs_before": {
+        "M1": 6,
+        "M2": 10,
+        "M3": 10
+      }
+    },
+    {
+      "query_id": "q0199",
+      "query": "R(c,b)",
+      "answers": {
+        "M1": "NO",
+        "M2": "NO",
+        "M3": "NO"
+      },
+      "justifications": {
+        "M1": [
+          "m1.p.antisymmetric"
+        ],
+        "M2": [
+          "m2.p.foundation"
+        ],
+        "M3": [
+          "m3.p.asymmetric"
+        ]
+      },
+      "contradiction": false,
+      "nogoods_created": [],
+      "configs_before": {
+        "M1": 6,
+        "M2": 10,
+        "M3": 10
+      }
+    }
+  ]
+}
